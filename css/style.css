@@ -1,0 +1,92 @@
+/* Stylesheet by Allison K. Smith, 2017 */
+
+ #map {
+    height: 500px;
+    width: 75%;
+    display: inline-block;
+    align-items: center;
+}
+body {
+    background-color: #636363;
+}
+
+#panel {
+    width: 20%;
+    padding: 10px;
+    display: inline-block;
+    vertical-align: top;
+    text-align: center;
+    line-height: 42px;
+}
+
+.leaflet-control-layers{
+    position
+    background-color: rgba(255,255,255,0.8);
+    fill-opacity: 0.8;
+    border-radius: 0;
+    outline: solid gray 1px;
+}
+
+
+
+.leaflet-control-zoom-in,
+.leaflet-control-zoom-out {
+	font: bold 18px 'Lucida Console', Monaco, monospace;
+	text-indent: 1px;
+    border-radius: 0px;
+	}
+.leaflet-control-zoom-out {
+	font-size: 20px;
+    border-radius: 0px;
+	}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 700;
+    text-align: left;
+    color: white;
+}
+
+
+.leaflet-control-layers-expanded{
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    width: 100 px;
+    height: 30 px;
+    background-color: rgba(255,255,255,0.8);
+    padding: 10px;
+    line-height: 45px; 
+    text-align: left;
+    border: solid gray 1px;
+    box-shadow: 0 1px 5px rgba(0,0,0,0.4);
+}
+
+#label{
+    position: absolute;
+    bottom: 20px;
+    right: 10px;
+    font-size: 14px;
+}
+
+#detail{
+    position: absolute;
+    bottom: 0px;
+    right: 70px;
+    font-size: 14px;
+}
+
+
+
+
+
+.leaflet-popup-content p {
+	margin: 5px 0;
+	}
+
+.leaflet-control-attribution{
+    font-size: 7px;
+}
