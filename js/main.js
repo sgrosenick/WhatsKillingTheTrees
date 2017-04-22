@@ -36,6 +36,8 @@ function createMap(){
     //function to call each data layer and add it to the json layers above
     getData(bebb, bc, eab, gm, hwa, jb, wpbr)
 
+
+//CREATE GROUPED LAYER CONTROL 
     //group of basemaps
     var basemaps = {
         "Grayscale": grayscale,
@@ -73,7 +75,7 @@ function createMap(){
       collapsed:false
     };
 
-    // Use the custom grouped layer control, not "L.control.layers"
+// MOVE LAYER COUNTROL OUT OF MAP
     var layerControl = L.control.groupedLayers(basemaps, groupedOverlays, options);
     map.addControl(layerControl)
     
@@ -82,12 +84,54 @@ function createMap(){
     // Get the desired parent node.
     var a = document.getElementById('panel');
 
-    // Finally append that node to the new parent.
+    // append that node to the new parent.
     function setParent(el, newParent){
         newParent.appendChild(el);
     }
     setParent(htmlObject, a);
-    };
+
+// CHANGE COLOR OF BUTTON WHEN SELECTED
+    var selectColor = "gray";
+    var normalColorPest = "lightgoldenrodyellow";
+    
+    
+    
+    map.on('overlayadd', function(i){
+        if (i.name == 'Banded Elm Bark Beetle' ){
+            $("#leaflet-control-layers-group-1 > label:nth-child(2)").css("background-color", selectColor)
+        }  else if (i.name == "Butternut Canker"){
+            $("#leaflet-control-layers-group-1 > label:nth-child(3)").css("background-color", selectColor)
+        } else if (i.name == "Emerald Ash Borer"){
+            $("#leaflet-control-layers-group-1 > label:nth-child(4)").css("background-color", selectColor)
+        } else if (i.name == "Gypsy Moth"){
+            $("#leaflet-control-layers-group-1 > label:nth-child(5)").css("background-color", selectColor)
+        } else if (i.name == "Hemlock Woolly Adelgid"){
+            $("#leaflet-control-layers-group-1 > label:nth-child(6)").css("background-color", selectColor)
+        } else if (i.name == "Japanese Beetle"){
+            $("#leaflet-control-layers-group-1 > label:nth-child(7)").css("background-color", selectColor)
+        } else if (i.name == "White Pine Blister Rust"){
+            $("#leaflet-control-layers-group-1 > label:nth-child(8)").css("background-color", selectColor)
+        }
+    });
+    
+    map.on('overlayremove', function(i){
+        if (i.name == 'Banded Elm Bark Beetle' ){
+            $("#leaflet-control-layers-group-1 > label:nth-child(2)").css("background-color", normalColorPest)
+        }  else if (i.name == "Butternut Canker"){
+            $("#leaflet-control-layers-group-1 > label:nth-child(3)").css("background-color", normalColorPest)
+        } else if (i.name == "Emerald Ash Borer"){
+            $("#leaflet-control-layers-group-1 > label:nth-child(4)").css("background-color", normalColorPest)
+        } else if (i.name == "Gypsy Moth"){
+            $("#leaflet-control-layers-group-1 > label:nth-child(5)").css("background-color", normalColorPest)
+        } else if (i.name == "Hemlock Woolly Adelgid"){
+            $("#leaflet-control-layers-group-1 > label:nth-child(6)").css("background-color", normalColorPest)
+        } else if (i.name == "Japanese Beetle"){
+            $("#leaflet-control-layers-group-1 > label:nth-child(7)").css("background-color", normalColorPest)
+        } else if (i.name == "White Pine Blister Rust"){
+            $("#leaflet-control-layers-group-1 > label:nth-child(8)").css("background-color", normalColorPest)
+        }
+    });
+};
 
 
 function getData(bebb, bc, eab, gm, hwa, jb, wpbr){
@@ -98,9 +142,7 @@ function getData(bebb, bc, eab, gm, hwa, jb, wpbr){
             //create an attributes array
             var attributes = processData(response);
             //add to layer
-            L.geoJson(response).addTo(bebb);
-            //test to see if on
-            pestSelect(map, response)
+            L.geoJson(response, pestStyle).addTo(bebb);
         }
     });
     $.ajax("data/Butternut_Canker.geojson", {
@@ -109,9 +151,7 @@ function getData(bebb, bc, eab, gm, hwa, jb, wpbr){
             //create an attributes array
             var attributes = processData(response);
             //add to layer
-            L.geoJson(response).addTo(bc)
-            //test to see if on
-            pestSelect(map, response)
+            L.geoJson(response, pestStyle).addTo(bc)
         }
     });
     $.ajax("data/Emerald_Ash_Borer.geojson", {
@@ -120,9 +160,7 @@ function getData(bebb, bc, eab, gm, hwa, jb, wpbr){
             //create an attributes array
             var attributes = processData(response);
             //add to layer
-            L.geoJson(response).addTo(eab)
-            //test to see if on
-            pestSelect(map, response)
+            L.geoJson(response, pestStyle).addTo(eab)
         }
     });
     $.ajax("data/Gypsy_Moth.geojson", {
@@ -131,9 +169,7 @@ function getData(bebb, bc, eab, gm, hwa, jb, wpbr){
             //create an attributes array
             var attributes = processData(response);
             //add to layer
-            L.geoJson(response).addTo(gm)
-            //test to see if on
-            pestSelect(map, response)
+            L.geoJson(response, pestStyle).addTo(gm)
         }
     });
     $.ajax("data/Hemlock_Woolly_Adelgid.geojson", {
@@ -142,9 +178,7 @@ function getData(bebb, bc, eab, gm, hwa, jb, wpbr){
             //create an attributes array
             var attributes = processData(response);
             //add to layer
-            L.geoJson(response).addTo(hwa)
-            //test to see if on
-            pestSelect(map, response)
+            L.geoJson(response, pestStyle).addTo(hwa)
         }
     });
     $.ajax("data/Japanese_Beetle.geojson", {
@@ -153,9 +187,7 @@ function getData(bebb, bc, eab, gm, hwa, jb, wpbr){
             //create an attributes array
             var attributes = processData(response);
             //add to layer
-            L.geoJson(response).addTo(jb)
-            //test to see if on
-            pestSelect(map, response)
+            L.geoJson(response, pestStyle).addTo(jb)
         }
     });
     $.ajax("data/White_Pine_Blister_Rust.geojson", {
@@ -164,9 +196,7 @@ function getData(bebb, bc, eab, gm, hwa, jb, wpbr){
             //create an attributes array
             var attributes = processData(response);
             //add to layer
-            L.geoJson(response).addTo(wpbr)
-            //test to see if on
-            pestSelect(map, response)
+            L.geoJson(response, pestStyle).addTo(wpbr)
         }
     });
 };
@@ -192,16 +222,13 @@ function processData(data){
     return attributes;
 };
 
-function pestSelect(map, layer) {
-    $("label").click(function() {
-        if (map.hasLayer(layer)) {
-            map.removeLayer(layer);
-            $("label").css("background-color", "gray");
-        } else {
-            map.addLayer(layer);
-            $("label").css("background-color", "red"); 
-        };
-    });
-};
+var pestStyle = {
+    fillColor: "#ff0000",
+    fillOpacity: 0.8,
+    color: "#ff0000",
+    weight: 0.9
+}
+
+
 
 $(document).ready(createMap);

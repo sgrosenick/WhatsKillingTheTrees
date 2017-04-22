@@ -103,7 +103,13 @@ h6 {
     width: 40%
 }
 
-#leaflet-control-layers-group-1 > label:nth-child(2),
+#leaflet-control-layers-group-1 > label:nth-child(2){
+    background-color: gray;
+    border-radius: 0.9em;
+    padding: 10px;
+    margin: 10px;
+    box-shadow: 0 1px 5px rgba(0,0,0,0.4);
+}
 #leaflet-control-layers-group-1 > label:nth-child(3),
 #leaflet-control-layers-group-1 > label:nth-child(4),
 #leaflet-control-layers-group-1 > label:nth-child(5),
@@ -113,7 +119,8 @@ h6 {
     background-color: lightgoldenrodyellow;
     border-radius: 0.9em;
     padding: 10px;
-    margin: 10px
+    margin: 10px;
+    box-shadow: 0 1px 5px rgba(0,0,0,0.4);
 }
 
 #leaflet-control-layers-group-2 > label:nth-child(2),
@@ -126,7 +133,9 @@ h6 {
     background-color: lightblue;
     border-radius: 0.9em;
     padding: 10px;
-    margin: 10px
+    margin: 10px;
+    box-shadow: 0 1px 5px rgba(0,0,0,0.4);
+        
 }
 
 
