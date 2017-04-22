@@ -98,7 +98,9 @@ function getData(bebb, bc, eab, gm, hwa, jb, wpbr){
             //create an attributes array
             var attributes = processData(response);
             //add to layer
-            L.geoJson(response).addTo(bebb)
+            L.geoJson(response).addTo(bebb);
+            //test to see if on
+            pestSelect(map, response)
         }
     });
     $.ajax("data/Butternut_Canker.geojson", {
@@ -108,6 +110,8 @@ function getData(bebb, bc, eab, gm, hwa, jb, wpbr){
             var attributes = processData(response);
             //add to layer
             L.geoJson(response).addTo(bc)
+            //test to see if on
+            pestSelect(map, response)
         }
     });
     $.ajax("data/Emerald_Ash_Borer.geojson", {
@@ -117,6 +121,8 @@ function getData(bebb, bc, eab, gm, hwa, jb, wpbr){
             var attributes = processData(response);
             //add to layer
             L.geoJson(response).addTo(eab)
+            //test to see if on
+            pestSelect(map, response)
         }
     });
     $.ajax("data/Gypsy_Moth.geojson", {
@@ -126,6 +132,8 @@ function getData(bebb, bc, eab, gm, hwa, jb, wpbr){
             var attributes = processData(response);
             //add to layer
             L.geoJson(response).addTo(gm)
+            //test to see if on
+            pestSelect(map, response)
         }
     });
     $.ajax("data/Hemlock_Woolly_Adelgid.geojson", {
@@ -135,6 +143,8 @@ function getData(bebb, bc, eab, gm, hwa, jb, wpbr){
             var attributes = processData(response);
             //add to layer
             L.geoJson(response).addTo(hwa)
+            //test to see if on
+            pestSelect(map, response)
         }
     });
     $.ajax("data/Japanese_Beetle.geojson", {
@@ -144,6 +154,8 @@ function getData(bebb, bc, eab, gm, hwa, jb, wpbr){
             var attributes = processData(response);
             //add to layer
             L.geoJson(response).addTo(jb)
+            //test to see if on
+            pestSelect(map, response)
         }
     });
     $.ajax("data/White_Pine_Blister_Rust.geojson", {
@@ -153,6 +165,8 @@ function getData(bebb, bc, eab, gm, hwa, jb, wpbr){
             var attributes = processData(response);
             //add to layer
             L.geoJson(response).addTo(wpbr)
+            //test to see if on
+            pestSelect(map, response)
         }
     });
 };
@@ -176,6 +190,18 @@ function processData(data){
     console.log(attributes);
 
     return attributes;
+};
+
+function pestSelect(map, layer) {
+    $("label").click(function() {
+        if (map.hasLayer(layer)) {
+            map.removeLayer(layer);
+            $("label").css("background-color", "gray");
+        } else {
+            map.addLayer(layer);
+            $("label").css("background-color", "red"); 
+        };
+    });
 };
 
 $(document).ready(createMap);

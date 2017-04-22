@@ -57,12 +57,14 @@ h6 {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     width: 100 px;
     height: 30 px;
-    background-color: rgba(255,255,255,0.8);
+    background-color: rgba(255,255,255,0);
     padding: 10px;
     line-height: 45px; 
     text-align: left;
     border: solid gray 1px;
     box-shadow: 0 1px 5px rgba(0,0,0,0.4);
+    height: 500px;
+    overflow-y: scroll
 }
 
 #label{
@@ -79,8 +81,65 @@ h6 {
     font-size: 14px;
 }
 
+.leaflet-control-layers-group-name{
+    font-size: 0.9em;
+}
+
+#leaflet-control-layers-group-1{
+    background-color: white;
+    padding: 10px;
+    font-size: 0.7em;
+    line-height: 25px;
+    float:left;
+    width: 40%
+}
+
+#leaflet-control-layers-group-2{
+    background-color: white;
+    padding: 10px;
+    font-size: 0.7em;
+    line-height: 25px;
+    float:right;
+    width: 40%
+}
+
+#leaflet-control-layers-group-1 > label:nth-child(2),
+#leaflet-control-layers-group-1 > label:nth-child(3),
+#leaflet-control-layers-group-1 > label:nth-child(4),
+#leaflet-control-layers-group-1 > label:nth-child(5),
+#leaflet-control-layers-group-1 > label:nth-child(6),
+#leaflet-control-layers-group-1 > label:nth-child(7),
+#leaflet-control-layers-group-1 > label:nth-child(8){
+    background-color: lightgoldenrodyellow;
+    border-radius: 0.9em;
+    padding: 10px;
+    margin: 10px
+}
+
+#leaflet-control-layers-group-2 > label:nth-child(2),
+#leaflet-control-layers-group-2 > label:nth-child(3),
+#leaflet-control-layers-group-2 > label:nth-child(4),
+#leaflet-control-layers-group-2 > label:nth-child(5),
+#leaflet-control-layers-group-2 > label:nth-child(6),
+#leaflet-control-layers-group-2 > label:nth-child(7),
+#leaflet-control-layers-group-2 > label:nth-child(8){
+    background-color: lightblue;
+    border-radius: 0.9em;
+    padding: 10px;
+    margin: 10px
+}
 
 
+
+
+.leaflet-control-layers-selector{
+    width:0;
+    height:0;
+}
+
+.leaflet-control-layers-group-name{
+    font-size: 15px;
+}
 
 
 .leaflet-popup-content p {
