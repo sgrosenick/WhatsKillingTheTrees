@@ -41,9 +41,7 @@ function createMap(){
     
     
     //function to call each data layer and add it to the json layers above
-    getData(bebb, bc, eab, gm, hwa, jb, wpbr, amElm, butternut, carHem, cedElm,
-           estHem, estWPine, rockElm, sepElm, slpElm, swWPine, sugPine, westWPine,
-           wbPine, wngdElm);
+    getData(bebb, bc, eab, gm, hwa, jb, wpbr, amElm, butternut, carHem, cedElm, estHem, estWPine, rockElm, sepElm, slpElm, swWPine, sugPine, westWPine, wbPine, wngdElm);
 
 
 //CREATE GROUPED LAYER CONTROL 
@@ -109,10 +107,12 @@ function createMap(){
 // CHANGE COLOR OF BUTTON WHEN SELECTED
     var selectColor = "gray";
     var normalColorPest = "lightgoldenrodyellow";
+    var normalColorTree = "lightsalmon";
     
     
     
     map.on('overlayadd', function(i){
+        //PESTS
         if (i.name == 'Banded Elm Bark Beetle' ){
             $("#leaflet-control-layers-group-1 > label:nth-child(2)").css("background-color", selectColor)
         }  else if (i.name == "Butternut Canker"){
@@ -127,6 +127,37 @@ function createMap(){
             $("#leaflet-control-layers-group-1 > label:nth-child(7)").css("background-color", selectColor)
         } else if (i.name == "White Pine Blister Rust"){
             $("#leaflet-control-layers-group-1 > label:nth-child(8)").css("background-color", selectColor)
+        } 
+        
+        //TREES
+        else if (i.name == "American Elm"){
+            $("#leaflet-control-layers-group-2 > label:nth-child(2)").css("background-color", selectColor)
+        } else if (i.name == "Butternut"){
+            $("#leaflet-control-layers-group-2 > label:nth-child(3)").css("background-color", selectColor)
+        } else if (i.name == "Carolina Hemlock"){
+            $("#leaflet-control-layers-group-2 > label:nth-child(4)").css("background-color", selectColor)
+        } else if (i.name == "Ceder Elm"){
+            $("#leaflet-control-layers-group-2 > label:nth-child(5)").css("background-color", selectColor)
+        } else if (i.name == "Eastern Hemlock"){
+            $("#leaflet-control-layers-group-2 > label:nth-child(6)").css("background-color", selectColor)
+        } else if (i.name == "Eastern White Pine"){
+            $("#leaflet-control-layers-group-2 > label:nth-child(7)").css("background-color", selectColor)
+        } else if (i.name == "Rock Elm"){
+            $("#leaflet-control-layers-group-2 > label:nth-child(8)").css("background-color", selectColor)
+        } else if (i.name == "September Elm"){
+            $("#leaflet-control-layers-group-2 > label:nth-child(9)").css("background-color", selectColor)
+        } else if (i.name == "Slippery Elm"){
+            $("#leaflet-control-layers-group-2 > label:nth-child(10)").css("background-color", selectColor)
+        } else if (i.name == "Southwestern White Pine"){
+            $("#leaflet-control-layers-group-2 > label:nth-child(11)").css("background-color", selectColor)
+        } else if (i.name == "Sugar Pine"){
+            $("#leaflet-control-layers-group-2 > label:nth-child(12)").css("background-color", selectColor)
+        } else if (i.name == "Western White Pine"){
+            $("#leaflet-control-layers-group-2 > label:nth-child(13)").css("background-color", selectColor)
+        } else if (i.name == "Whitebark Pine"){
+            $("#leaflet-control-layers-group-2 > label:nth-child(14)").css("background-color", selectColor)
+        } else if (i.name == "Winged Elm"){
+            $("#leaflet-control-layers-group-2 > label:nth-child(15)").css("background-color", selectColor)
         }
     });
     
@@ -146,13 +177,42 @@ function createMap(){
         } else if (i.name == "White Pine Blister Rust"){
             $("#leaflet-control-layers-group-1 > label:nth-child(8)").css("background-color", normalColorPest)
         }
+        
+        //TREES
+        else if (i.name == "American Elm"){
+            $("#leaflet-control-layers-group-2 > label:nth-child(2)").css("background-color", normalColorTree)
+        } else if (i.name == "Butternut"){
+            $("#leaflet-control-layers-group-2 > label:nth-child(3)").css("background-color", normalColorTree)
+        } else if (i.name == "Carolina Hemlock"){
+            $("#leaflet-control-layers-group-2 > label:nth-child(4)").css("background-color", normalColorTree)
+        } else if (i.name == "Ceder Elm"){
+            $("#leaflet-control-layers-group-2 > label:nth-child(5)").css("background-color", normalColorTree)
+        } else if (i.name == "Eastern Hemlock"){
+            $("#leaflet-control-layers-group-2 > label:nth-child(6)").css("background-color", normalColorTree)
+        } else if (i.name == "Eastern White Pine"){
+            $("#leaflet-control-layers-group-2 > label:nth-child(7)").css("background-color", normalColorTree)
+        } else if (i.name == "Rock Elm"){
+            $("#leaflet-control-layers-group-2 > label:nth-child(8)").css("background-color", normalColorTree)
+        } else if (i.name == "September Elm"){
+            $("#leaflet-control-layers-group-2 > label:nth-child(9)").css("background-color", normalColorTree)
+        } else if (i.name == "Slippery Elm"){
+            $("#leaflet-control-layers-group-2 > label:nth-child(10)").css("background-color", normalColorTree)
+        } else if (i.name == "Southwestern White Pine"){
+            $("#leaflet-control-layers-group-2 > label:nth-child(11)").css("background-color", normalColorTree)
+        } else if (i.name == "Sugar Pine"){
+            $("#leaflet-control-layers-group-2 > label:nth-child(12)").css("background-color", normalColorTree)
+        } else if (i.name == "Western White Pine"){
+            $("#leaflet-control-layers-group-2 > label:nth-child(13)").css("background-color", normalColorTree)
+        } else if (i.name == "Whitebark Pine"){
+            $("#leaflet-control-layers-group-2 > label:nth-child(14)").css("background-color", normalColorTree)
+        } else if (i.name == "Winged Elm"){
+            $("#leaflet-control-layers-group-2 > label:nth-child(15)").css("background-color", normalColorTree)
+        }
     });
 };
 
 
-function getData(bebb, bc, eab, gm, hwa, jb, wpbr, amElm, butternut, carHem, 
-                 cedElm, estHem, estWPine, rockElm, sepElm, slpElm, swWPine,
-                 sugPine, westWPine, wbPine, wgndElm){
+function getData(bebb, bc, eab, gm, hwa, jb, wpbr, amElm, butternut, carHem, cedElm, estHem, estWPine, rockElm, sepElm, slpElm, swWPine, sugPine, westWPine, wbPine, wngdElm){
     //load the data
     $.ajax("data/Banded_Elm_Bark_Beetle.geojson", {
         dataType: "json",
@@ -288,7 +348,7 @@ function getData(bebb, bc, eab, gm, hwa, jb, wpbr, amElm, butternut, carHem,
             //create attribute array
             var attributes = processData(response);
             //add to layer
-            L.geoJson(response, treeStyle).addTo(SepElm)
+            L.geoJson(response, treeStyle).addTo(sepElm)
         }
     });
     $.ajax("data/SlipperyElm.geojson", {

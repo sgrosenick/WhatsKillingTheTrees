@@ -129,7 +129,14 @@ h6 {
 #leaflet-control-layers-group-2 > label:nth-child(5),
 #leaflet-control-layers-group-2 > label:nth-child(6),
 #leaflet-control-layers-group-2 > label:nth-child(7),
-#leaflet-control-layers-group-2 > label:nth-child(8){
+#leaflet-control-layers-group-2 > label:nth-child(8),
+#leaflet-control-layers-group-2 > label:nth-child(9),
+#leaflet-control-layers-group-2 > label:nth-child(10),
+#leaflet-control-layers-group-2 > label:nth-child(11),
+#leaflet-control-layers-group-2 > label:nth-child(12),
+#leaflet-control-layers-group-2 > label:nth-child(13),
+#leaflet-control-layers-group-2 > label:nth-child(14),
+#leaflet-control-layers-group-2 > label:nth-child(15){
     background-color: lightsalmon;
     border-radius: 0.9em;
     padding: 10px;
