@@ -378,7 +378,7 @@ var pestStyle = {
 var treeStyle = {
     fillColor: "#3E873F",
     fillOpacity: 0.8,
-    color: "#000",
+    color: "#fff",
     weight: 1
 }
 
