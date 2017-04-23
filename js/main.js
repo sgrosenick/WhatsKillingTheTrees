@@ -24,17 +24,26 @@ function createMap(){
     var wpbr = new L.geoJson();
     
     // create blank geojson layers for all tree data
-    var tree1 = new L.geoJson().addTo(map);
-    var tree2 = new L.geoJson();
-    var tree3 = new L.geoJson();
-    var tree4 = new L.geoJson();
-    var tree5 = new L.geoJson();
-    var tree6 = new L.geoJson();
-    var tree7 = new L.geoJson();
+    var amElm = new L.geoJson().addTo(map);
+    var butternut = new L.geoJson();
+    var carHem = new L.geoJson();
+    var cedElm = new L.geoJson();
+    var estHem = new L.geoJson();
+    var estWPine = new L.geoJson();
+    var rockElm = new L.geoJson();
+    var sepElm = new L.geoJson();
+    var slpElm = new L.geoJson();
+    var swWPine = new L.geoJson();
+    var sugPine = new L.geoJson();
+    var westWPine = new L.geoJson();
+    var wbPine = new L.geoJson();
+    var wngdElm = new L.geoJson();
     
     
     //function to call each data layer and add it to the json layers above
-    getData(bebb, bc, eab, gm, hwa, jb, wpbr)
+    getData(bebb, bc, eab, gm, hwa, jb, wpbr, amElm, butternut, carHem, cedElm,
+           estHem, estWPine, rockElm, sepElm, slpElm, swWPine, sugPine, westWPine,
+           wbPine, wngdElm);
 
 
 //CREATE GROUPED LAYER CONTROL 
@@ -55,13 +64,20 @@ function createMap(){
         "White Pine Blister Rust": wpbr
       },
       "Trees": {
-        "tree1": tree1,
-        "tree2": tree2,
-        "tree3": tree3,
-        "tree4": tree4,
-        "tree5": tree5,
-        "tree6": tree6,
-        "tree7": tree7          
+        "American Elm": amElm,
+        "Butternut": butternut,
+        "Carolina Hemlock": carHem,
+        "Ceder Elm": cedElm,
+        "Eastern Hemlock": estHem,
+        "Eastern White Pine": estWPine,
+        "Rock Elm": rockElm,
+        "September Elm": sepElm,
+        "Slippery Elm": slpElm,
+        "Southwestern White Pine": swWPine,
+        "Sugar Pine": sugPine,
+        "Western White Pine": westWPine,
+        "Whitebark Pine": wbPine,
+        "Winged Elm": wngdElm
       }
     };
     
@@ -134,7 +150,9 @@ function createMap(){
 };
 
 
-function getData(bebb, bc, eab, gm, hwa, jb, wpbr){
+function getData(bebb, bc, eab, gm, hwa, jb, wpbr, amElm, butternut, carHem, 
+                 cedElm, estHem, estWPine, rockElm, sepElm, slpElm, swWPine,
+                 sugPine, westWPine, wbPine, wgndElm){
     //load the data
     $.ajax("data/Banded_Elm_Bark_Beetle.geojson", {
         dataType: "json",
@@ -195,8 +213,136 @@ function getData(bebb, bc, eab, gm, hwa, jb, wpbr){
         success: function(response){
             //create an attributes array
             var attributes = processData(response);
+            console.log("WhitePineBlisterRust: " + attributes);
             //add to layer
             L.geoJson(response, pestStyle).addTo(wpbr)
+        }
+    });
+    $.ajax("data/AmericanElm.geojson", {
+        dataType: "json",
+        success: function(response){
+            //create attribute array
+            var attributes = processData(response);
+            console.log("American Elm: " + attributes);
+            //add to layer
+            L.geoJson(response, treeStyle).addTo(amElm)
+        }
+    });
+    $.ajax("data/Butternut.geojson", {
+        dataType: "json",
+        success: function(response){
+            //create attribute array
+            var attributes = processData(response);
+            //add to layer
+            L.geoJson(response, treeStyle).addTo(butternut)
+        }
+    });
+    $.ajax("data/CarolinaHemlock.geojson", {
+        dataType: "json",
+        success: function(response){
+            //create attribute array
+            var attributes = processData(response);
+            //add to layer
+            L.geoJson(response, treeStyle).addTo(carHem)
+        }
+    });
+    $.ajax("data/CedarElm.geojson", {
+        dataType: "json",
+        success: function(response){
+            //create attribute array
+            var attributes = processData(response);
+            //add to layer
+            L.geoJson(response, treeStyle).addTo(cedElm)
+        }
+    });
+    $.ajax("data/EasternHemlock.geojson", {
+        dataType: "json",
+        success: function(response){
+            //create attribute array
+            var attributes = processData(response);
+            //add to layer
+            L.geoJson(response, treeStyle).addTo(estHem)
+        }
+    });
+    $.ajax("data/EasternWhitePine.geojson", {
+        dataType: "json",
+        success: function(response){
+            //create attribute array
+            var attributes = processData(response);
+            //add to layer
+            L.geoJson(response, treeStyle).addTo(estWPine)
+        }
+    });
+    $.ajax("data/RockElm.geojson", {
+        dataType: "json",
+        success: function(response){
+            //create attribute array
+            var attributes = processData(response);
+            //add to layer
+            L.geoJson(response, treeStyle).addTo(rockElm)
+        }
+    });
+    $.ajax("data/SeptemberElm.geojson", {
+        dataType: "json",
+        success: function(response){
+            //create attribute array
+            var attributes = processData(response);
+            //add to layer
+            L.geoJson(response, treeStyle).addTo(SepElm)
+        }
+    });
+    $.ajax("data/SlipperyElm.geojson", {
+        dataType: "json",
+        success: function(response){
+            //create attribute array
+            var attributes = processData(response);
+            //add to layer
+            L.geoJson(response, treeStyle).addTo(slpElm)
+        }
+    });
+    $.ajax("data/SouthwesternWhitePine.geojson", {
+        dataType: "json",
+        success: function(response){
+            //create attribute array
+            var attributes = processData(response);
+            //add to layer
+            L.geoJson(response, treeStyle).addTo(swWPine)
+        }
+    });
+    $.ajax("data/SugarPine.geojson", {
+        dataType: "json",
+        success: function(response){
+            //create attribute array
+            var attributes = processData(response);
+            //add to layer
+            L.geoJson(response, treeStyle).addTo(sugPine)
+        }
+    });
+    $.ajax("data/WesternWhitePine.geojson", {
+        dataType: "json",
+        success: function(response){
+            //create attribute array
+            var attributes = processData(response);
+            //add to layer
+            L.geoJson(response, treeStyle).addTo(westWPine)
+        }
+    });
+    $.ajax("data/WhitebarkPine.geojson", {
+        dataType: "json",
+        success: function(response){
+            //create attribute array
+            var attributes = processData(response);
+            //add to layer
+            L.geoJson(response, treeStyle).addTo(wbPine)
+        }
+    });
+    $.ajax("data/WingedElm.geojson", {
+        dataType: "json",
+        success: function(response){
+            //create attribute array
+            var attributes = processData(response);
+            //add to layer
+            L.geoJson(response, treeStyle).addTo(wngdElm)
         }
     });
 };
@@ -229,6 +375,11 @@ var pestStyle = {
     weight: 0.9
 }
 
-
+var treeStyle = {
+    fillColor: "#3E873F",
+    fillOpacity: 0.8,
+    color: "#000",
+    weight: 1
+}
 
 $(document).ready(createMap);
