@@ -231,6 +231,20 @@ function createMap(){
             $("#leaflet-control-layers-group-2 > label:nth-child(15)").css("background-color", normalColorTree)
         }
     });
+    
+    
+// SEARCH BAR
+    var searchControl = new L.Control.Search({
+        layer: bebb,
+        propertyName: 'name',
+        marker: false,
+        //moveToLocation: function(latlng, title, map){
+        //    var zoom = map.getBoundsZoom(latlng.layer.getbounds());
+        //    map.setView(latlnt, zoom);;
+        //}
+    });
+    
+    map.addControl(searchControl);
 };
 
 
