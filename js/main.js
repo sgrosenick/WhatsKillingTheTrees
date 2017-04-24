@@ -15,21 +15,21 @@ function createMap(){
 
 
     // create blank geojson layers for all pest data
-    var bebb = new L.geoJson().addTo(map);
-    var bc = new L.geoJson();
-    var eab = new L.geoJson();
-    var gm = new L.geoJson();
-    var hwa = new L.geoJson();
-    var jb = new L.geoJson();
-    var wpbr = new L.geoJson();
+    var bebb =  L.geoJson().addTo(map);
+    var bc =  L.geoJson();
+    var eab =  L.geoJson();
+    var gm =  L.geoJson();
+    var hwa =  L.geoJson();
+    var jb =  L.geoJson();
+    var wpbr =  L.geoJson();
     
     // create blank geojson layers for all tree data
     //var amElm = new L.geoJson().addTo(map);
-    var butternut = new L.geoJson().addTo(map);
-    var elms = new L.geoJson();
-    var hemlocks = new L.geoJson();
-    var pines = new L.geoJson();
-    var whitePines = new L.geoJson();
+    var butternut =  L.geoJson().addTo(map);
+    var elms =  L.geoJson();
+    var hemlocks =  L.geoJson();
+    var pines =  L.geoJson();
+    var whitePines =  L.geoJson();
     /*var carHem = new L.geoJson();
     var cedElm = new L.geoJson();
     var estHem = new L.geoJson();
@@ -133,19 +133,19 @@ function createMap(){
         } 
         
         //TREES
-        else if (i.name == "American Elm"){
+        else if (i.name == "Butternut"){
             $("#leaflet-control-layers-group-2 > label:nth-child(2)").css("background-color", selectColor);
             i.layer.bringToBack();
-        } else if (i.name == "Butternut"){
+        } else if (i.name == "Elms"){
             $("#leaflet-control-layers-group-2 > label:nth-child(3)").css("background-color", selectColor);
             i.layer.bringToBack();
-        } else if (i.name == "Carolina Hemlock"){
+        } else if (i.name == "Hemlocks"){
             $("#leaflet-control-layers-group-2 > label:nth-child(4)").css("background-color", selectColor);
             i.layer.bringToBack();
-        } else if (i.name == "Ceder Elm"){
+        } else if (i.name == "Pines"){
             $("#leaflet-control-layers-group-2 > label:nth-child(5)").css("background-color", selectColor);
             i.layer.bringToBack();
-        } else if (i.name == "Eastern Hemlock"){
+        } else if (i.name == "White Pines"){
             $("#leaflet-control-layers-group-2 > label:nth-child(6)").css("background-color", selectColor);
             i.layer.bringToBack();
         } /*else if (i.name == "Eastern White Pine"){
@@ -196,15 +196,15 @@ function createMap(){
         }
         
         //TREES
-        else if (i.name == "American Elm"){
+        else if (i.name == "Butternut"){
             $("#leaflet-control-layers-group-2 > label:nth-child(2)").css("background-color", normalColorTree)
-        } else if (i.name == "Butternut"){
+        } else if (i.name == "Elms"){
             $("#leaflet-control-layers-group-2 > label:nth-child(3)").css("background-color", normalColorTree)
-        } else if (i.name == "Carolina Hemlock"){
+        } else if (i.name == "Hemlocks"){
             $("#leaflet-control-layers-group-2 > label:nth-child(4)").css("background-color", normalColorTree)
-        } else if (i.name == "Ceder Elm"){
+        } else if (i.name == "Pines"){
             $("#leaflet-control-layers-group-2 > label:nth-child(5)").css("background-color", normalColorTree)
-        } else if (i.name == "Eastern Hemlock"){
+        } else if (i.name == "White Pines"){
             $("#leaflet-control-layers-group-2 > label:nth-child(6)").css("background-color", normalColorTree)
         } /*else if (i.name == "Eastern White Pine"){
             $("#leaflet-control-layers-group-2 > label:nth-child(7)").css("background-color", normalColorTree)
