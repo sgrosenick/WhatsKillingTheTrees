@@ -24,9 +24,13 @@ function createMap(){
     var wpbr = new L.geoJson();
     
     // create blank geojson layers for all tree data
-    var amElm = new L.geoJson().addTo(map);
-    var butternut = new L.geoJson();
-    var carHem = new L.geoJson();
+    //var amElm = new L.geoJson().addTo(map);
+    var butternut = new L.geoJson().addTo(map);
+    var elms = new L.geoJson();
+    var hemlocks = new L.geoJson();
+    var pines = new L.geoJson();
+    var whitePines = new L.geoJson();
+    /*var carHem = new L.geoJson();
     var cedElm = new L.geoJson();
     var estHem = new L.geoJson();
     var estWPine = new L.geoJson();
@@ -38,10 +42,10 @@ function createMap(){
     var westWPine = new L.geoJson();
     var wbPine = new L.geoJson();
     var wngdElm = new L.geoJson();
-    
+    */
     
     //function to call each data layer and add it to the json layers above
-    getData(bebb, bc, eab, gm, hwa, jb, wpbr, amElm, butternut, carHem, cedElm, estHem, estWPine, rockElm, sepElm, slpElm, swWPine, sugPine, westWPine, wbPine, wngdElm);
+    getData(bebb, bc, eab, gm, hwa, jb, wpbr, butternut, elms, hemlocks, pines, whitePines);
 
 
 //CREATE GROUPED LAYER CONTROL 
@@ -62,20 +66,11 @@ function createMap(){
         "White Pine Blister Rust": wpbr
       },
       "Trees": {
-        "American Elm": amElm,
         "Butternut": butternut,
-        "Carolina Hemlock": carHem,
-        "Ceder Elm": cedElm,
-        "Eastern Hemlock": estHem,
-        "Eastern White Pine": estWPine,
-        "Rock Elm": rockElm,
-        "September Elm": sepElm,
-        "Slippery Elm": slpElm,
-        "Southwestern White Pine": swWPine,
-        "Sugar Pine": sugPine,
-        "Western White Pine": westWPine,
-        "Whitebark Pine": wbPine,
-        "Winged Elm": wngdElm
+        "Elms": elms,
+        "Hemlocks": hemlocks,
+        "Pines": pines,
+        "White Pines": whitePines
       }
     };
     
@@ -153,7 +148,7 @@ function createMap(){
         } else if (i.name == "Eastern Hemlock"){
             $("#leaflet-control-layers-group-2 > label:nth-child(6)").css("background-color", selectColor);
             i.layer.bringToBack();
-        } else if (i.name == "Eastern White Pine"){
+        } /*else if (i.name == "Eastern White Pine"){
             $("#leaflet-control-layers-group-2 > label:nth-child(7)").css("background-color", selectColor);
             i.layer.bringToBack();
         } else if (i.name == "Rock Elm"){
@@ -180,7 +175,7 @@ function createMap(){
         } else if (i.name == "Winged Elm"){
             $("#leaflet-control-layers-group-2 > label:nth-child(15)").css("background-color", selectColor);
             i.layer.bringToBack();
-        }
+        }*/
     });
     
     map.on('overlayremove', function(i){
@@ -211,7 +206,7 @@ function createMap(){
             $("#leaflet-control-layers-group-2 > label:nth-child(5)").css("background-color", normalColorTree)
         } else if (i.name == "Eastern Hemlock"){
             $("#leaflet-control-layers-group-2 > label:nth-child(6)").css("background-color", normalColorTree)
-        } else if (i.name == "Eastern White Pine"){
+        } /*else if (i.name == "Eastern White Pine"){
             $("#leaflet-control-layers-group-2 > label:nth-child(7)").css("background-color", normalColorTree)
         } else if (i.name == "Rock Elm"){
             $("#leaflet-control-layers-group-2 > label:nth-child(8)").css("background-color", normalColorTree)
@@ -229,7 +224,7 @@ function createMap(){
             $("#leaflet-control-layers-group-2 > label:nth-child(14)").css("background-color", normalColorTree)
         } else if (i.name == "Winged Elm"){
             $("#leaflet-control-layers-group-2 > label:nth-child(15)").css("background-color", normalColorTree)
-        }
+        }*/
     });
     
     
@@ -248,9 +243,9 @@ function createMap(){
 };
 
 
-function getData(bebb, bc, eab, gm, hwa, jb, wpbr, amElm, butternut, carHem, cedElm, estHem, estWPine, rockElm, sepElm, slpElm, swWPine, sugPine, westWPine, wbPine, wngdElm){
+function getData(bebb, bc, eab, gm, hwa, jb, wpbr, butternut, elms, hemlocks, pines, whitePines ){
     //  LOAD DATA TREE
-    $.ajax("data/AmericanElm.geojson", {
+    /*$.ajax("data/AmericanElm.geojson", {
         dataType: "json",
         success: function(response){
             //create attribute array
@@ -260,7 +255,7 @@ function getData(bebb, bc, eab, gm, hwa, jb, wpbr, amElm, butternut, carHem, ced
             L.geoJson(response, treeStyle).addTo(amElm);
             response.bringToBack;
         }
-    });
+    });*/
     $.ajax("data/Butternut.geojson", {
         dataType: "json",
         success: function(response){
@@ -270,7 +265,43 @@ function getData(bebb, bc, eab, gm, hwa, jb, wpbr, amElm, butternut, carHem, ced
             L.geoJson(response, treeStyle).addTo(butternut)
         }
     });
-    $.ajax("data/CarolinaHemlock.geojson", {
+    $.ajax("data/Elms.geojson", {
+        dataType: "json",
+        success: function(response){
+            //create attribute array
+            var attributes = processData(response);
+            //add to layer
+            L.geoJson(response, treeStyle).addTo(elms)
+        }
+    });
+    $.ajax("data/Hemlocks.geojson", {
+        dataType: "json",
+        success: function(response){
+            //create attribute array
+            var attributes = processData(response);
+            //add to layer
+            L.geoJson(response, treeStyle).addTo(hemlocks)
+        }
+    });
+    $.ajax("data/Pines.geojson", {
+        dataType: "json",
+        success: function(response){
+            //create attribute array
+            var attributes = processData(response);
+            //add to layer
+            L.geoJson(response, treeStyle).addTo(pines)
+        }
+    });
+    $.ajax("data/WhitePines.geojson", {
+        dataType: "json",
+        success: function(response){
+            //create attribute array
+            var attributes = processData(response);
+            //add to layer
+            L.geoJson(response, treeStyle).addTo(whitePines)
+        }
+    });
+    /*$.ajax("data/CarolinaHemlock.geojson", {
         dataType: "json",
         success: function(response){
             //create attribute array
@@ -377,7 +408,7 @@ function getData(bebb, bc, eab, gm, hwa, jb, wpbr, amElm, butternut, carHem, ced
             //add to layer
             L.geoJson(response, treeStyle).addTo(wngdElm)
         }
-    });
+    });*/
     
     //  LOAD DISEASE DATA
     $.ajax("data/Banded_Elm_Bark_Beetle.geojson", {
