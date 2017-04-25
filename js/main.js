@@ -177,33 +177,11 @@ function createMap(){
 
 
 
-function removeAll(map, bebb, bc, eab, gm, hwa, jb, wpbr, butternut, elms, hemlocks, pines, whitePines, ashes){
-    map.removeLayer(bebb);
-    $("#bebb").removeClass('selected');
-    map.removeLayer(bc);
-    $("#bc").removeClass('selected');
-    map.removeLayer(eab);
-    $("#eab").removeClass('selected');
-    map.removeLayer(gm);
-    $("#gm").removeClass('selected');
-    map.removeLayer(hwa);
-    $("#hwa").removeClass('selected');
-    map.removeLayer(jb);
-    $("#jb").removeClass('selected');
-    map.removeLayer(wpbr);
-    $("#wpbr").removeClass('selected');
-    map.removeLayer(butternut);
-    $("#butternut").removeClass('selected');
-    map.removeLayer(elms);
-    $("#elms").removeClass('selected');
-    map.removeLayer(hemlocks);
-    $("#hemlocks").removeClass('selected');
-    map.removeLayer(pines);
-    $("#pines").removeClass('selected');
-    map.removeLayer(whitePines);
-    $("#whitepines").removeClass('selected');
-    map.removeLayer(ashes);
-    $("#ashes").removeClass('selected');
+function removeAll(map, allLayers){
+    for (i in allLayers){
+        map.removeLayer(allLayers[i]);
+        $("#"+i).removeClass('selected'); 
+    };
 };
 
 function createButtons(map, bebb, bc, eab, gm, hwa, jb, wpbr, butternut, elms, hemlocks, pines, whitePines, ashes){
@@ -215,7 +193,7 @@ function createButtons(map, bebb, bc, eab, gm, hwa, jb, wpbr, butternut, elms, h
             map.removeLayer(bebb);
             map.removeLayer(elms);
         } else {
-            removeAll(map, bebb, bc, eab, gm, hwa, jb, wpbr, butternut, elms, hemlocks, pines, whitePines, ashes);
+            removeAll(map, allLayers);
             map.addLayer(elms);
             map.addLayer(bebb);
             $(this).addClass('selected');
@@ -230,7 +208,7 @@ function createButtons(map, bebb, bc, eab, gm, hwa, jb, wpbr, butternut, elms, h
             map.removeLayer(bc);
             map.removeLayer(butternut);
         } else {
-            removeAll(map, bebb, bc, eab, gm, hwa, jb, wpbr, butternut, elms, hemlocks, pines, whitePines, ashes);
+            removeAll(map, allLayers);
             map.addLayer(butternut);
             map.addLayer(bc);
             $(this).addClass('selected');
@@ -245,7 +223,7 @@ function createButtons(map, bebb, bc, eab, gm, hwa, jb, wpbr, butternut, elms, h
             map.removeLayer(eab);
             map.removeLayer(ashes);
         } else {
-            removeAll(map, bebb, bc, eab, gm, hwa, jb, wpbr, butternut, elms, hemlocks, pines, whitePines, ashes);
+            removeAll(map, allLayers);
             map.addLayer(ashes);
             map.addLayer(eab);
             $(this).addClass('selected');
@@ -261,7 +239,7 @@ function createButtons(map, bebb, bc, eab, gm, hwa, jb, wpbr, butternut, elms, h
             map.removeLayer(gm);
             map.removeLayer(elms);
         } else {
-            removeAll(map, bebb, bc, eab, gm, hwa, jb, wpbr, butternut, elms, hemlocks, pines, whitePines, ashes);
+            removeAll(map, allLayers);
             map.addLayer(elms);
             map.addLayer(gm);
             $(this).addClass('selected');
@@ -276,7 +254,7 @@ function createButtons(map, bebb, bc, eab, gm, hwa, jb, wpbr, butternut, elms, h
             map.removeLayer(hwa);
             map.removeLayer(hemlocks);
         } else {
-            removeAll(map, bebb, bc, eab, gm, hwa, jb, wpbr, butternut, elms, hemlocks, pines, whitePines, ashes);
+            removeAll(map, allLayers);
             map.addLayer(hemlocks);
             map.addLayer(hwa);
             $(this).addClass('selected');
@@ -291,7 +269,7 @@ function createButtons(map, bebb, bc, eab, gm, hwa, jb, wpbr, butternut, elms, h
             map.removeLayer(jb);
             map.removeLayer(elms);
         } else {
-            removeAll(map, bebb, bc, eab, gm, hwa, jb, wpbr, butternut, elms, hemlocks, pines, whitePines, ashes);
+            removeAll(map, allLayers);
             map.addLayer(elms);
             map.addLayer(jb);
             $(this).addClass('selected');
@@ -308,7 +286,7 @@ function createButtons(map, bebb, bc, eab, gm, hwa, jb, wpbr, butternut, elms, h
             map.removeLayer(pines);
             map.removeLayer(whitePines);
         } else {
-            removeAll(map, bebb, bc, eab, gm, hwa, jb, wpbr, butternut, elms, hemlocks, pines, whitePines, ashes);
+            removeAll(map, allLayers);
             map.addLayer(pines);
             map.addLayer(whitePines);
             map.addLayer(wpbr);
@@ -324,7 +302,7 @@ function createButtons(map, bebb, bc, eab, gm, hwa, jb, wpbr, butternut, elms, h
             map.removeLayer(butternut);
             map.removeLayer(hwa);
         } else {
-            removeAll(map, bebb, bc, eab, gm, hwa, jb, wpbr, butternut, elms, hemlocks, pines, whitePines, ashes);
+            removeAll(map, allLayers);
             map.addLayer(hwa);
             map.addLayer(butternut);
             $(this).addClass('selected');
@@ -337,7 +315,7 @@ function createButtons(map, bebb, bc, eab, gm, hwa, jb, wpbr, butternut, elms, h
             map.removeLayer(elms);
             map.removeLayer(hwa);
         } else {
-            removeAll(map, bebb, bc, eab, gm, hwa, jb, wpbr, butternut, elms, hemlocks, pines, whitePines, ashes);
+            removeAll(map, allLayers);
             map.addLayer(hwa);
             map.addLayer(elms);
             $(this).addClass('selected');
@@ -350,7 +328,7 @@ function createButtons(map, bebb, bc, eab, gm, hwa, jb, wpbr, butternut, elms, h
             map.removeLayer(hemlocks);
             map.removeLayer(hwa);
         } else {
-            removeAll(map, bebb, bc, eab, gm, hwa, jb, wpbr, butternut, elms, hemlocks, pines, whitePines, ashes);
+            removeAll(map, allLayers);
             map.addLayer(hwa);
             map.addLayer(hemlocks);
             $(this).addClass('selected');
@@ -363,7 +341,7 @@ function createButtons(map, bebb, bc, eab, gm, hwa, jb, wpbr, butternut, elms, h
             map.removeLayer(pines);
             map.removeLayer(hwa);
         } else {
-            removeAll(map, bebb, bc, eab, gm, hwa, jb, wpbr, butternut, elms, hemlocks, pines, whitePines, ashes);
+            removeAll(map, allLayers);
             map.addLayer(hwa);
             map.addLayer(pines);
             $(this).addClass('selected');
@@ -376,7 +354,7 @@ function createButtons(map, bebb, bc, eab, gm, hwa, jb, wpbr, butternut, elms, h
             map.removeLayer(whitepines);
             map.removeLayer(hwa);
         } else {
-            removeAll(map, bebb, bc, eab, gm, hwa, jb, wpbr, butternut, elms, hemlocks, pines, whitePines, ashes);
+            removeAll(map, allLayers);
             map.addLayer(hwa);
             map.addLayer(whitepines);
             $(this).addClass('selected');
@@ -389,7 +367,7 @@ function createButtons(map, bebb, bc, eab, gm, hwa, jb, wpbr, butternut, elms, h
             map.removeLayer(hwa);
             map.removeLayer(ashes);
         } else {
-            removeAll(map, bebb, bc, eab, gm, hwa, jb, wpbr, butternut, elms, hemlocks, pines, whitePines, ashes);
+            removeAll(map, allLayers);
             map.addLayer(hwa);
             map.addLayer(ashes);
             $(this).addClass('selected');
@@ -514,7 +492,7 @@ function getData( bebb, bc, eab, gm, hwa, jb, wpbr, butternut, elms, hemlocks, p
         success: function(response){
             //create an attributes array
             var attributes = processData(response);
-            console.log("WhitePineBlisterRust: " + attributes);
+            //console.log("WhitePineBlisterRust: " + attributes);
             //add to layer
             L.geoJson(response, pestStyle).addTo(wpbr)
         }
@@ -534,7 +512,7 @@ function processData(data){
     };
 
     //check result
-    console.log(attributes);
+    //console.log(attributes);
 
     return attributes;
 };
