@@ -55,38 +55,37 @@ function createMap(){
         "Streets": streets
     };
     // Overlay layers are grouped
-    var groupedOverlays = {
-      "Pests": {
+    var overlays = {
+        //pests
         "Banded Elm Bark Beetle": bebb,
         "Butternut Canker": bc,
         "Emerald Ash Borer": eab,
         "Gypsy Moth": gm, 
         "Hemlock Woolly Adelgid": hwa,
         "Japanese Beetle": jb,
-        "White Pine Blister Rust": wpbr
-      },
-      "Trees": {
+        "White Pine Blister Rust": wpbr,
+        
+        //trees
         "Butternut": butternut,
         "Elms": elms,
         "Hemlocks": hemlocks,
         "Pines": pines,
         "White Pines": whitePines
-      }
     };
     
     
     var options = {
       // Make the "Landmarks" group exclusive (use radio inputs)
-      exclusiveGroups: ["Pests"],
+      //exclusiveGroups: ["Pests"],
       // Show a checkbox next to non-exclusive group labels for toggling all
-      groupCheckboxes: true,
+      //groupCheckboxes: true,
       //keep panel popped open
       collapsed:false,
     };
 
     
-// MOVE LAYER COUNTROL OUT OF MAP
-    var layerControl = L.control.groupedLayers(basemaps, groupedOverlays, options);
+// MOVE LAYER CONTROL OUT OF MAP
+    var layerControl = L.control.layers(basemaps, overlays, options);
     map.addControl(layerControl)
     
     // Call the getContainer routine.
@@ -103,50 +102,54 @@ function createMap(){
 // CHANGE COLOR OF BUTTON WHEN SELECTED
     var selectColor = "gray";
     var normalColorPest = "lightgoldenrodyellow";
-    var normalColorTree = "lightsalmon";
+    var normalColorTree = "lightcoral";
     
-    
+    var cssButtonSelector = "#panel > div > form > div.leaflet-control-layers-overlays > label:nth-child"
     
     map.on('overlayadd', function(i){
         //PESTS
         if (i.name == 'Banded Elm Bark Beetle' ){
-            $("#leaflet-control-layers-group-1 > label:nth-child(2)").css("background-color", selectColor);
+            $(cssButtonSelector+"(1)").css("background-color", selectColor);
             i.layer.bringToFront();
         }  else if (i.name == "Butternut Canker"){
-            $("#leaflet-control-layers-group-1 > label:nth-child(3)").css("background-color", selectColor);
+            $(cssButtonSelector+"(2)").css("background-color", selectColor);
             i.layer.bringToFront();
+            map.addLayer(elms);
+            map.addLayer(elms);
         } else if (i.name == "Emerald Ash Borer"){
-            $("#leaflet-control-layers-group-1 > label:nth-child(4)").css("background-color", selectColor);
+            $(cssButtonSelector+"(3)").css("background-color", selectColor);
             i.layer.bringToFront();
+            map.addLayer(hemlocks);
         } else if (i.name == "Gypsy Moth"){
-            $("#leaflet-control-layers-group-1 > label:nth-child(5)").css("background-color", selectColor);
+            $(cssButtonSelector+"(4)").css("background-color", selectColor);
             i.layer.bringToFront();
         } else if (i.name == "Hemlock Woolly Adelgid"){
-            $("#leaflet-control-layers-group-1 > label:nth-child(6)").css("background-color", selectColor);
+            $(cssButtonSelector+"(5)").css("background-color", selectColor);
             i.layer.bringToFront();
         } else if (i.name == "Japanese Beetle"){
-            $("#leaflet-control-layers-group-1 > label:nth-child(7)").css("background-color", selectColor);
+            $(cssButtonSelector+"(6)").css("background-color", selectColor);
             i.layer.bringToFront();
         } else if (i.name == "White Pine Blister Rust"){
-            $("#leaflet-control-layers-group-1 > label:nth-child(8)").css("background-color", selectColor);
+            $(cssButtonSelector+"(7)").css("background-color", selectColor);
             i.layer.bringToFront();
         } 
         
         //TREES
         else if (i.name == "Butternut"){
-            $("#leaflet-control-layers-group-2 > label:nth-child(2)").css("background-color", selectColor);
+            $(cssButtonSelector+"(8)").css("background-color", selectColor);
             i.layer.bringToBack();
         } else if (i.name == "Elms"){
-            $("#leaflet-control-layers-group-2 > label:nth-child(3)").css("background-color", selectColor);
+            $(cssButtonSelector+"(9)").css("background-color", selectColor);
             i.layer.bringToBack();
         } else if (i.name == "Hemlocks"){
-            $("#leaflet-control-layers-group-2 > label:nth-child(4)").css("background-color", selectColor);
+            $(cssButtonSelector+"(10)").css("background-color", selectColor);
             i.layer.bringToBack();
         } else if (i.name == "Pines"){
-            $("#leaflet-control-layers-group-2 > label:nth-child(5)").css("background-color", selectColor);
+            $(cssButtonSelector+"(11)").css("background-color", selectColor);
             i.layer.bringToBack();
+            map.addLayer(elms);
         } else if (i.name == "White Pines"){
-            $("#leaflet-control-layers-group-2 > label:nth-child(6)").css("background-color", selectColor);
+            $(cssButtonSelector+"(12)").css("background-color", selectColor);
             i.layer.bringToBack();
         } /*else if (i.name == "Eastern White Pine"){
             $("#leaflet-control-layers-group-2 > label:nth-child(7)").css("background-color", selectColor);
@@ -180,32 +183,32 @@ function createMap(){
     
     map.on('overlayremove', function(i){
         if (i.name == 'Banded Elm Bark Beetle' ){
-            $("#leaflet-control-layers-group-1 > label:nth-child(2)").css("background-color", normalColorPest)
+            $(cssButtonSelector+"(1)").css("background-color", normalColorPest)
         }  else if (i.name == "Butternut Canker"){
-            $("#leaflet-control-layers-group-1 > label:nth-child(3)").css("background-color", normalColorPest)
+            $(cssButtonSelector+"(2)").css("background-color", normalColorPest)
         } else if (i.name == "Emerald Ash Borer"){
-            $("#leaflet-control-layers-group-1 > label:nth-child(4)").css("background-color", normalColorPest)
+            $(cssButtonSelector+"(3)").css("background-color", normalColorPest)
         } else if (i.name == "Gypsy Moth"){
-            $("#leaflet-control-layers-group-1 > label:nth-child(5)").css("background-color", normalColorPest)
+            $(cssButtonSelector+"(4)").css("background-color", normalColorPest)
         } else if (i.name == "Hemlock Woolly Adelgid"){
-            $("#leaflet-control-layers-group-1 > label:nth-child(6)").css("background-color", normalColorPest)
+            $(cssButtonSelector+"(5)").css("background-color", normalColorPest)
         } else if (i.name == "Japanese Beetle"){
-            $("#leaflet-control-layers-group-1 > label:nth-child(7)").css("background-color", normalColorPest)
+            $(cssButtonSelector+"(6)").css("background-color", normalColorPest)
         } else if (i.name == "White Pine Blister Rust"){
-            $("#leaflet-control-layers-group-1 > label:nth-child(8)").css("background-color", normalColorPest)
+            $(cssButtonSelector+"(7)").css("background-color", normalColorPest)
         }
         
         //TREES
         else if (i.name == "Butternut"){
-            $("#leaflet-control-layers-group-2 > label:nth-child(2)").css("background-color", normalColorTree)
+            $(cssButtonSelector+"(8)").css("background-color", normalColorTree)
         } else if (i.name == "Elms"){
-            $("#leaflet-control-layers-group-2 > label:nth-child(3)").css("background-color", normalColorTree)
+            $(cssButtonSelector+"(9)").css("background-color", normalColorTree)
         } else if (i.name == "Hemlocks"){
-            $("#leaflet-control-layers-group-2 > label:nth-child(4)").css("background-color", normalColorTree)
+            $(cssButtonSelector+"(10)").css("background-color", normalColorTree)
         } else if (i.name == "Pines"){
-            $("#leaflet-control-layers-group-2 > label:nth-child(5)").css("background-color", normalColorTree)
+            $(cssButtonSelector+"(11)").css("background-color", normalColorTree)
         } else if (i.name == "White Pines"){
-            $("#leaflet-control-layers-group-2 > label:nth-child(6)").css("background-color", normalColorTree)
+            $(cssButtonSelector+"(12)").css("background-color", normalColorTree)
         } /*else if (i.name == "Eastern White Pine"){
             $("#leaflet-control-layers-group-2 > label:nth-child(7)").css("background-color", normalColorTree)
         } else if (i.name == "Rock Elm"){
