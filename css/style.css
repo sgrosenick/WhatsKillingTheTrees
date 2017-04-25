@@ -2,7 +2,7 @@
 
  #map {
     height: 500px;
-    width: 75%;
+    width: 70%;
     display: inline-block;
     align-items: center;
 }
@@ -11,7 +11,7 @@ body {
 }
 
 #panel {
-    width: 20%;
+    width: 25%;
     padding: 10px;
     display: inline-block;
     vertical-align: top;
@@ -55,7 +55,7 @@ h6 {
 
 .leaflet-control-layers-expanded{
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    width: 100 px;
+    width: 90%;
     height: 30 px;
     background-color: rgba(255,255,255,0);
     padding: 10px;
@@ -64,7 +64,13 @@ h6 {
     border: solid gray 1px;
     box-shadow: 0 1px 5px rgba(0,0,0,0.4);
     height: 500px;
-    overflow-y: scroll
+    overflow-y: scroll;
+}
+
+#panel > div > form > div.leaflet-control-layers-overlays{
+    display: grid;
+    grid-template-columns: auto;
+    grid-gap: 10px;
 }
 
 #label{
@@ -110,6 +116,141 @@ h6 {
     margin: 10px;
     box-shadow: 0 1px 5px rgba(0,0,0,0.4);
 }
+
+#panel > div > form > div.leaflet-control-layers-overlays > label:nth-child(1){
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    background-color: lightgoldenrodyellow;
+    border-radius: 0.9em;
+    padding: 10px;
+    box-shadow: 0 1px 5px rgba(0,0,0,0.4);
+}
+#panel > div > form > div.leaflet-control-layers-overlays > label:nth-child(2){
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 2;
+    grid-row-end: 2;
+    background-color: lightgoldenrodyellow;
+    border-radius: 0.9em;
+    padding: 10px;
+    box-shadow: 0 1px 5px rgba(0,0,0,0.4);
+}
+#panel > div > form > div.leaflet-control-layers-overlays > label:nth-child(3){
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 3;
+    grid-row-end: 3;
+    background-color: lightgoldenrodyellow;
+    border-radius: 0.9em;
+    padding: 10px;
+    box-shadow: 0 1px 5px rgba(0,0,0,0.4);
+}
+#panel > div > form > div.leaflet-control-layers-overlays > label:nth-child(4){
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 4;
+    grid-row-end: 4;
+    background-color: lightgoldenrodyellow;
+    border-radius: 0.9em;
+    padding: 10px;
+    box-shadow: 0 1px 5px rgba(0,0,0,0.4);
+}
+#panel > div > form > div.leaflet-control-layers-overlays > label:nth-child(5){
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 5;
+    grid-row-end: 5;
+    background-color: lightgoldenrodyellow;
+    border-radius: 0.9em;
+    padding: 10px;
+    box-shadow: 0 1px 5px rgba(0,0,0,0.4);
+}
+#panel > div > form > div.leaflet-control-layers-overlays > label:nth-child(6){
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 6;
+    grid-row-end: 6;
+    background-color: lightgoldenrodyellow;
+    border-radius: 0.9em;
+    padding: 10px;
+    box-shadow: 0 1px 5px rgba(0,0,0,0.4);
+}
+#panel > div > form > div.leaflet-control-layers-overlays > label:nth-child(7){
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 7;
+    grid-row-end: 7;
+    background-color: lightgoldenrodyellow;
+    border-radius: 0.9em;
+    padding: 10px;
+    box-shadow: 0 1px 5px rgba(0,0,0,0.4);
+}
+
+#panel > div > form > div.leaflet-control-layers-overlays > label:nth-child(8){
+    grid-column-start: 3;
+    grid-column-end: 5;
+    grid-row-start: 1;
+    grid-row-end: 1;
+    background-color: lightcoral;
+    border-radius: 0.9em;
+    padding: 10px;
+    box-shadow: 0 1px 5px rgba(0,0,0,0.4);
+}
+#panel > div > form > div.leaflet-control-layers-overlays > label:nth-child(9){
+    grid-column-start: 3;
+    grid-column-end: 5;
+    grid-row-start: 2;
+    grid-row-end: 2;
+    background-color: lightcoral;
+    border-radius: 0.9em;
+    padding: 10px;
+    box-shadow: 0 1px 5px rgba(0,0,0,0.4);
+}
+#panel > div > form > div.leaflet-control-layers-overlays > label:nth-child(10)
+{
+    grid-column-start: 3;
+    grid-column-end: 5;
+    grid-row-start: 3;
+    grid-row-end: 3;
+    background-color: lightcoral;
+    border-radius: 0.9em;
+    padding: 10px;
+    box-shadow: 0 1px 5px rgba(0,0,0,0.4);
+}
+#panel > div > form > div.leaflet-control-layers-overlays > label:nth-child(11){
+    grid-column-start: 3;
+    grid-column-end: 5;
+    grid-row-start: 4;
+    grid-row-end: 4;
+    background-color: lightcoral;
+    border-radius: 0.9em;
+    padding: 10px;
+    box-shadow: 0 1px 5px rgba(0,0,0,0.4);
+}
+#panel > div > form > div.leaflet-control-layers-overlays > label:nth-child(12){
+    grid-column-start: 3;
+    grid-column-end: 5;
+    grid-row-start: 5;
+    grid-row-end: 5;
+    background-color: lightcoral;
+    border-radius: 0.9em;
+    padding: 10px;
+    box-shadow: 0 1px 5px rgba(0,0,0,0.4);
+}
+
+#panel > div > form > div.leaflet-control-layers-overlays > label:nth-child(13){
+    grid-column-start: 3;
+    grid-column-end: 5;
+    grid-row-start: 6;
+    grid-row-end: 6;
+    background-color: lightcoral;
+    border-radius: 0.9em;
+    padding: 10px;
+    box-shadow: 0 1px 5px rgba(0,0,0,0.4);
+}
+
 #leaflet-control-layers-group-1 > label:nth-child(3),
 #leaflet-control-layers-group-1 > label:nth-child(4),
 #leaflet-control-layers-group-1 > label:nth-child(5),
@@ -156,3 +297,4 @@ h6 {
 .leaflet-control-attribution{
     font-size: 7px;
 }
+
