@@ -196,41 +196,49 @@ function createMap(){
     map.addControl(searchControl);
 };
 
+
+
 function createButtons(map, bebb, bc, eab, gm, hwa, jb, wpbr, butternut, elms, hemlocks, pines, whitePines, ashes){
     $("#bebb").click(function(event) {
         event.preventDefault();
         if(map.hasLayer(bebb)) {
             $(this).removeClass('selected');
+            $("#elms").removeClass('selected');
             map.removeLayer(bebb);
             map.removeLayer(elms);
         } else {
             map.addLayer(bebb);
             map.addLayer(elms);
             $(this).addClass('selected');
+            $("#elms").addClass('selected');
         }
     });
     $("#bc").click(function(event) {
         event.preventDefault();
         if(map.hasLayer(bc)) {
             $(this).removeClass('selected');
+            $("#butternut").removeClass('selected');
             map.removeLayer(bc);
-            map.removeLayer(elms);
+            map.removeLayer(butternut);
         } else {
             map.addLayer(bc);
-            map.addLayer(elms);
+            map.addLayer(butternut);
             $(this).addClass('selected');
+            $("#butternut").addClass('selected');
         }
     });
     $("#eab").click(function(event) {
         event.preventDefault();
         if(map.hasLayer(eab)) {
             $(this).removeClass('selected');
+            $("#ashes").removeClass('selected');
             map.removeLayer(eab);
-            map.removeLayer(elms);
+            map.removeLayer(ashes);
         } else {
             map.addLayer(eab);
-            map.addLayer(elms);
+            map.addLayer(ashes);
             $(this).addClass('selected');
+            $("#ashes").addClass('selected');
         }
     });
     
@@ -250,12 +258,14 @@ function createButtons(map, bebb, bc, eab, gm, hwa, jb, wpbr, butternut, elms, h
         event.preventDefault();
         if(map.hasLayer(hwa)) {
             $(this).removeClass('selected');
+            $("#hemlocks").removeClass('selected');
             map.removeLayer(hwa);
-            map.removeLayer(elms);
+            map.removeLayer(hemlocks);
         } else {
             map.addLayer(hwa);
-            map.addLayer(elms);
+            map.addLayer(hemlocks);
             $(this).addClass('selected');
+            $("#hemlocks").addClass('selected');
         }
     });
     $("#jb").click(function(event) {
@@ -274,12 +284,18 @@ function createButtons(map, bebb, bc, eab, gm, hwa, jb, wpbr, butternut, elms, h
         event.preventDefault();
         if(map.hasLayer(wpbr)) {
             $(this).removeClass('selected');
+            $("#pines").removeClass('selected');
+            $("#whitepines").removeClass('selected');
             map.removeLayer(wpbr);
-            map.removeLayer(elms);
+            map.removeLayer(pines);
+            map.removeLayer(whitePines);
         } else {
             map.addLayer(wpbr);
-            map.addLayer(elms);
+            map.addLayer(pines);
+            map.addLayer(whitePines);
             $(this).addClass('selected');
+            $("#pines").addClass('selected');
+            $("#whitepines").addClass('selected');
         }
     });
     $("#butternut").click(function(event) {
@@ -346,7 +362,7 @@ function createButtons(map, bebb, bc, eab, gm, hwa, jb, wpbr, butternut, elms, h
         event.preventDefault();
         if(map.hasLayer(ashes)) {
             $(this).removeClass('selected');
-            map.removeLayer(ash);
+            map.removeLayer(ashes);
             map.removeLayer(hwa);
         } else {
             map.addLayer(ashes);
