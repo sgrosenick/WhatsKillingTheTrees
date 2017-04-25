@@ -47,6 +47,9 @@ function createMap(){
     //function to call each data layer and add it to the json layers above
     getData(bebb, bc, eab, gm, hwa, jb, wpbr, butternut, elms, hemlocks, pines, whitePines);
 
+    createButtons(map, bebb, bc, eab, gm, hwa, jb, wpbr, butternut, elms, hemlocks, pines, whitePines )
+    
+   
 
 //CREATE GROUPED LAYER CONTROL 
     //group of basemaps
@@ -245,8 +248,170 @@ function createMap(){
     map.addControl(searchControl);
 };
 
+function createButtons(map, bebb, bc, eab, gm, hwa, jb, wpbr, butternut, elms, hemlocks, pines, whitePines ){
+    $("#bebb").click(function(event) {
+        event.preventDefault();
+        if(map.hasLayer(bebb)) {
+            $(this).removeClass('selected');
+            map.removeLayer(bebb);
+            map.removeLayer(elms);
+        } else {
+            map.addLayer(bebb);
+            map.addLayer(elms);
+            $(this).addClass('selected');
+        }
+    });
+    $("#bc").click(function(event) {
+        event.preventDefault();
+        if(map.hasLayer(bc)) {
+            $(this).removeClass('selected');
+            map.removeLayer(bc);
+            map.removeLayer(elms);
+        } else {
+            map.addLayer(bc);
+            map.addLayer(elms);
+            $(this).addClass('selected');
+        }
+    });
+    $("#eab").click(function(event) {
+        event.preventDefault();
+        if(map.hasLayer(eab)) {
+            $(this).removeClass('selected');
+            map.removeLayer(eab);
+            map.removeLayer(elms);
+        } else {
+            map.addLayer(eab);
+            map.addLayer(elms);
+            $(this).addClass('selected');
+        }
+    });
+    
+    $("#gm").click(function(event) {
+        event.preventDefault();
+        if(map.hasLayer(gm)) {
+            $(this).removeClass('selected');
+            map.removeLayer(gm);
+            map.removeLayer(elms);
+        } else {
+            map.addLayer(gm);
+            map.addLayer(elms);
+            $(this).addClass('selected');
+        }
+    });
+    $("#hwa").click(function(event) {
+        event.preventDefault();
+        if(map.hasLayer(hwa)) {
+            $(this).removeClass('selected');
+            map.removeLayer(hwa);
+            map.removeLayer(elms);
+        } else {
+            map.addLayer(hwa);
+            map.addLayer(elms);
+            $(this).addClass('selected');
+        }
+    });
+    $("#jb").click(function(event) {
+        event.preventDefault();
+        if(map.hasLayer(jb)) {
+            $(this).removeClass('selected');
+            map.removeLayer(jb);
+            map.removeLayer(elms);
+        } else {
+            map.addLayer(jb);
+            map.addLayer(elms);
+            $(this).addClass('selected');
+        }
+    });
+    $("#wpbr").click(function(event) {
+        event.preventDefault();
+        if(map.hasLayer(wpbr)) {
+            $(this).removeClass('selected');
+            map.removeLayer(wpbr);
+            map.removeLayer(elms);
+        } else {
+            map.addLayer(wpbr);
+            map.addLayer(elms);
+            $(this).addClass('selected');
+        }
+    });
+    $("#butternut").click(function(event) {
+        event.preventDefault();
+        if(map.hasLayer(butternut)) {
+            $(this).removeClass('selected');
+            map.removeLayer(butternut);
+            map.removeLayer(hwa);
+        } else {
+            map.addLayer(butternut);
+            map.addLayer(hwa);
+            $(this).addClass('selected');
+        }
+    });
+    $("#elms").click(function(event) {
+        event.preventDefault();
+        if(map.hasLayer(elms)) {
+            $(this).removeClass('selected');
+            map.removeLayer(elms);
+            map.removeLayer(hwa);
+        } else {
+            map.addLayer(elms);
+            map.addLayer(hwa);
+            $(this).addClass('selected');
+        }
+    });
+    $("#Hemlocks").click(function(event) {
+        event.preventDefault();
+        if(map.hasLayer(hemlocks)) {
+            $(this).removeClass('selected');
+            map.removeLayer(hemlocks);
+            map.removeLayer(hwa);
+        } else {
+            map.addLayer(hemlocks);
+            map.addLayer(hwa);
+            $(this).addClass('selected');
+        }
+    });
+    $("#pines").click(function(event) {
+        event.preventDefault();
+        if(map.hasLayer(pines)) {
+            $(this).removeClass('selected');
+            map.removeLayer(pines);
+            map.removeLayer(hwa);
+        } else {
+            map.addLayer(pines);
+            map.addLayer(hwa);
+            $(this).addClass('selected');
+        }
+    });
+    $("#whitepines").click(function(event) {
+        event.preventDefault();
+        if(map.hasLayer(whitepines)) {
+            $(this).removeClass('selected');
+            map.removeLayer(whitepines);
+            map.removeLayer(hwa);
+        } else {
+            map.addLayer(whitepines);
+            map.addLayer(hwa);
+            $(this).addClass('selected');
+        }
+    });
+    //******MAKE ACTIVE ONCE ASH LAYER IS CREATED*****
+    /*
+    $("#ash").click(function(event) {
+        event.preventDefault();
+        if(map.hasLayer(ash)) {
+            $(this).removeClass('selected');
+            map.removeLayer(ash);
+            map.removeLayer(hwa);
+        } else {
+            map.addLayer(ash);
+            map.addLayer(hwa);
+            $(this).addClass('selected');
+        }
+    });
+    */
+};
 
-function getData(bebb, bc, eab, gm, hwa, jb, wpbr, butternut, elms, hemlocks, pines, whitePines ){
+function getData( bebb, bc, eab, gm, hwa, jb, wpbr, butternut, elms, hemlocks, pines, whitePines ){
     //  LOAD DATA TREE
     /*$.ajax("data/AmericanElm.geojson", {
         dataType: "json",

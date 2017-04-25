@@ -12,6 +12,7 @@
         <link rel="stylesheet" href="lib/leaflet/leaflet.css">
         <link rel="stylesheet" href ="lib/leaflet-groupedlayercontrol-gh-pages/leaflet-groupedlayercontrol-gh-pages/src/leaflet.groupedlayercontrol.css">
         <link rel="stylesheet" href ="lib/leaflet-search-master/leaflet-search-master/src/leaflet-search.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
         <link rel="stylesheet" href="css/style.css">
 
 		<!--[if IE<9]>
@@ -21,7 +22,32 @@
 
 	<body>
 		<!--put your initial page content here-->
-        <div id="panel"> </div>
+        <div id="panel"> 
+            <div id = "layerSelect">
+                <div id = "pests">
+                    <ul>
+                        <li><a id="bebb" href="#" class="btn btn-primary">Banded Elm Bark Beetle</a></li>
+                        <li><a id="bc" href="#" class="btn btn-primary">Butternut Canker</a></li>
+                        <li><a id="eab" href="#" class="btn btn-primary">Emerald Ash Borer</a></li>
+                        <li><a id="gm" href="#" class="btn btn-primary">Gypsy Moth</a></li>
+                        <li><a id="hwa" href="#" class="btn btn-primary">Hemlock Woolly Adelgid</a></li>
+                        <li><a id="jb" href="#" class="btn btn-primary">Japanese Beetle</a></li>
+                        <li><a id="wpbr" href="#" class="btn btn-primary">White Pine Blister Rust</a></li>
+
+                    </ul>
+                </div>
+                <div id = "trees">
+                    <ul>
+                        <li><a id="butternut" href="#" class="btn btn-primary">Butternut</a></li>
+                        <li><a id="elms" href="#" class="btn btn-primary">Elms</a></li>
+                        <li><a id="Hemlocks" href="#" class="btn btn-primary">Hemlocks</a></li>
+                        <li><a id="pines" href="#" class="btn btn-primary">Pines</a></li>
+                        <li><a id="whitepines" href="#" class="btn btn-primary">White Pines</a></li>
+                        <li><a id="ash" href="#" class="btn btn-primary">Ash</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
         <div id="map"> </div>
         
         
