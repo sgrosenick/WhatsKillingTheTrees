@@ -17,11 +17,33 @@ body {
     vertical-align: top;
     text-align: center;
     line-height: 42px;
+    overflow-y: auto;
 }
 
 
+#pests > ul > li > .btn{
+    background-color: indianred;
+}
 
+#trees >  ul > li > .btn{
+    background-color: green;
+}
 
+.btn-primary{
+    display:block;
+    margin-bottom: 5px;
+    white-space: normal;
+}
+
+#pests > ul > li > .btn.btn-primary.selected {
+    color: lightyellow;
+    background-color: darkred
+}
+
+#trees > ul > li > .btn.btn-primary.selected {
+    color: lightyellow;
+    background-color: darkgreen;
+}
 
 .leaflet-control-zoom-in,
 .leaflet-control-zoom-out {
@@ -49,7 +71,7 @@ h6 {
 #layerSelect{
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     width: 90%;
-    height: 30 px;
+    height: 100%;
     background-color: rgba(255,255,255,0);
     padding: 10px;
     line-height: 45px; 
@@ -57,7 +79,6 @@ h6 {
     border: solid gray 1px;
     box-shadow: 0 1px 5px rgba(0,0,0,0.4);
     height: 500px;
-    overflow-y: scroll;
 }
 
 ul{
@@ -69,19 +90,14 @@ ul{
     width:55%;
     float:left;
 }
+
+
 #trees{
     width:40%;
     float:right;
 }
 
-.btn-primary{
-    display:block;
-    margin-bottom: 5px;
-}
 
-.btn.btn-primary.selected {
-    color: orange;
-}
 
 
 #label{

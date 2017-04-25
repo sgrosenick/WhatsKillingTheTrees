@@ -15,7 +15,7 @@ function createMap(){
 
 
     // create blank geojson layers for all pest data
-    var bebb =  L.geoJson().addTo(map);
+    var bebb =  L.geoJson();
     var bc =  L.geoJson();
     var eab =  L.geoJson();
     var gm =  L.geoJson();
@@ -24,12 +24,14 @@ function createMap(){
     var wpbr =  L.geoJson();
     
     // create blank geojson layers for all tree data
-    var butternut =  L.geoJson().addTo(map);
+    var butternut =  L.geoJson();
     var elms =  L.geoJson();
     var hemlocks =  L.geoJson();
     var pines =  L.geoJson();
     var whitePines =  L.geoJson();
     var ashes = L.geoJson();
+    
+    allLayers = {bebb, bc, eab, gm, hwa, jb, wpbr, butternut, elms, hemlocks, pines, whitePines, ashes}
     
     //function to call each data layer and add it to the json layers above
     getData(bebb, bc, eab, gm, hwa, jb, wpbr, butternut, elms, hemlocks, pines, whitePines, ashes);
@@ -44,39 +46,16 @@ function createMap(){
         "Grayscale": grayscale,
         "Streets": streets
     };
-    // Overlay layers are grouped
-    var overlays = {
-        //pests
-        "Banded Elm Bark Beetle": bebb,
-        "Butternut Canker": bc,
-        "Emerald Ash Borer": eab,
-        "Gypsy Moth": gm, 
-        "Hemlock Woolly Adelgid": hwa,
-        "Japanese Beetle": jb,
-        "White Pine Blister Rust": wpbr,
-        
-        //trees
-        "Butternut": butternut,
-        "Elms": elms,
-        "Hemlocks": hemlocks,
-        "Pines": pines,
-        "White Pines": whitePines,
-        "Ashes": ashes
-    };
     
     
     var options = {
-      // Make the "Landmarks" group exclusive (use radio inputs)
-      //exclusiveGroups: ["Pests"],
-      // Show a checkbox next to non-exclusive group labels for toggling all
-      //groupCheckboxes: true,
       //keep panel popped open
       collapsed:false,
     };
 
     
 // MOVE LAYER CONTROL OUT OF MAP
-    var layerControl = L.control.layers(basemaps, overlays, options);
+    var layerControl = L.control.layers(basemaps);
     map.addControl(layerControl)
     
     // Call the getContainer routine.
@@ -95,92 +74,90 @@ function createMap(){
     var normalColorPest = "lightgoldenrodyellow";
     var normalColorTree = "lightcoral";
     
-    var cssButtonSelector = "#panel > div > form > div.leaflet-control-layers-overlays > label:nth-child"
-    
+    var cssButtonSelector = ".btn.btn-primary"
+/* 
     map.on('overlayadd', function(i){
         //PESTS
         if (i.name == 'Banded Elm Bark Beetle' ){
-            $(cssButtonSelector+"(1)").css("background-color", selectColor);
+            $("#bebb"+cssButtonSelector).css("background-color", selectColor);
             i.layer.bringToFront();
         }  else if (i.name == "Butternut Canker"){
-            $(cssButtonSelector+"(2)").css("background-color", selectColor);
+            $("#bc"+cssButtonSelector).css("background-color:", selectColor);
             i.layer.bringToFront();
-            map.addLayer(elms);
-            map.addLayer(elms);
         } else if (i.name == "Emerald Ash Borer"){
-            $(cssButtonSelector+"(3)").css("background-color", selectColor);
+            $("#eab"+cssButtonSelector).css("background-color", selectColor);
             i.layer.bringToFront();
             map.addLayer(hemlocks);
         } else if (i.name == "Gypsy Moth"){
-            $(cssButtonSelector+"(4)").css("background-color", selectColor);
+            $("#gm"+cssButtonSelector).css("background-color", selectColor);
             i.layer.bringToFront();
         } else if (i.name == "Hemlock Woolly Adelgid"){
-            $(cssButtonSelector+"(5)").css("background-color", selectColor);
+            $("#hwa"+cssButtonSelector).css("background-color", selectColor);
             i.layer.bringToFront();
         } else if (i.name == "Japanese Beetle"){
-            $(cssButtonSelector+"(6)").css("background-color", selectColor);
+            $("#jb"+cssButtonSelector).css("background-color", selectColor);
             i.layer.bringToFront();
         } else if (i.name == "White Pine Blister Rust"){
-            $(cssButtonSelector+"(7)").css("background-color", selectColor);
+            $("#wpbr"+cssButtonSelector).css("background-color", selectColor);
             i.layer.bringToFront();
         } 
         
         //TREES
         else if (i.name == "Ashes"){
-            $(cssButtonSelector+"(8)").css("background-color", selectColor);
+            $("#ash"+cssButtonSelector).css("background-color", selectColor);
             i.layer.bringToBack();
         } else if (i.name == "Butternut"){
-            $(cssButtonSelector+"(9)").css("background-color", selectColor);
+            $("#butternut"+cssButtonSelector).css("background-color", selectColor);
             i.layer.bringToBack();
         } else if (i.name == "Elms"){
-            $(cssButtonSelector+"(10)").css("background-color", selectColor);
+            $("#elms"+cssButtonSelector).css("background-color", selectColor);
             i.layer.bringToBack();
         } else if (i.name == "Hemlocks"){
-            $(cssButtonSelector+"(11)").css("background-color", selectColor);
+            $("#hemlocks"+cssButtonSelector).css("background-color", selectColor);
             i.layer.bringToBack();
             map.addLayer(elms);
         } else if (i.name == "Pines"){
-            $(cssButtonSelector+"(12)").css("background-color", selectColor);
+            $("#pines"+cssButtonSelector).css("background-color", selectColor);
             i.layer.bringToBack();
         } else if (i.name == "White Pines"){
-            $(cssButtonSelector+"(13)").css("background-color", selectColor);
+            $("#whitepines"+cssButtonSelector).css("background-color", selectColor);
             i.layer.bringToBack();
         }
     });
-    
+
     map.on('overlayremove', function(i){
         if (i.name == 'Banded Elm Bark Beetle' ){
-            $(cssButtonSelector+"(1)").css("background-color", normalColorPest)
+            $("#bebb"+cssButtonSelecto).css("background-color", normalColorPest)
         }  else if (i.name == "Butternut Canker"){
-            $(cssButtonSelector+"(2)").css("background-color", normalColorPest)
+            $("#bc"+cssButtonSelector).css("background-color", normalColorPest)
         } else if (i.name == "Emerald Ash Borer"){
-            $(cssButtonSelector+"(3)").css("background-color", normalColorPest)
+            $("#eab"+cssButtonSelector).css("background-color", normalColorPest)
         } else if (i.name == "Gypsy Moth"){
-            $(cssButtonSelector+"(4)").css("background-color", normalColorPest)
+            $("#gm"+cssButtonSelector).css("background-color", normalColorPest)
         } else if (i.name == "Hemlock Woolly Adelgid"){
-            $(cssButtonSelector+"(5)").css("background-color", normalColorPest)
+            $("#hwa"+cssButtonSelector).css("background-color", normalColorPest)
         } else if (i.name == "Japanese Beetle"){
-            $(cssButtonSelector+"(6)").css("background-color", normalColorPest)
+            $("#jb"+cssButtonSelector).css("background-color", normalColorPest)
         } else if (i.name == "White Pine Blister Rust"){
-            $(cssButtonSelector+"(7)").css("background-color", normalColorPest)
+            $("#wpbr"+cssButtonSelector).css("background-color", normalColorPest)
         }
         
         //TREES
         else if (i.name == "Ashes"){
-            $(cssButtonSelector+"(8)").css("background-color", normalColorTree)
+            $("#ash"+cssButtonSelector).css("background-color", normalColorTree)
         } else if (i.name == "Butternut"){
-            $(cssButtonSelector+"(9)").css("background-color", normalColorTree)
+            $("#butternut"+cssButtonSelector).css("background-color", normalColorTree)
         } else if (i.name == "Elms"){
-            $(cssButtonSelector+"(10)").css("background-color", normalColorTree)
+            $("#elms"+cssButtonSelector).css("background-color", normalColorTree)
         } else if (i.name == "Hemlocks"){
-            $(cssButtonSelector+"(11)").css("background-color", normalColorTree)
+            $("#hemlocks"+cssButtonSelector).css("background-color", normalColorTree)
         } else if (i.name == "Pines"){
-            $(cssButtonSelector+"(12)").css("background-color", normalColorTree)
+            $("#pines"+cssButtonSelector).css("background-color", normalColorTree)
         } else if (i.name == "White Pines"){
-            $(cssButtonSelector+"(13)").css("background-color", normalColorTree)
+            $("#whitepines"+cssButtonSelector).css("background-color", normalColorTree)
         }
     });
-    
+  */   
     
 // SEARCH BAR
     var searchControl = new L.Control.Search({
@@ -194,9 +171,40 @@ function createMap(){
     });
     
     map.addControl(searchControl);
+    
+    return allLayers;
 };
 
 
+
+function removeAll(map, bebb, bc, eab, gm, hwa, jb, wpbr, butternut, elms, hemlocks, pines, whitePines, ashes){
+    map.removeLayer(bebb);
+    $("#bebb").removeClass('selected');
+    map.removeLayer(bc);
+    $("#bc").removeClass('selected');
+    map.removeLayer(eab);
+    $("#eab").removeClass('selected');
+    map.removeLayer(gm);
+    $("#gm").removeClass('selected');
+    map.removeLayer(hwa);
+    $("#hwa").removeClass('selected');
+    map.removeLayer(jb);
+    $("#jb").removeClass('selected');
+    map.removeLayer(wpbr);
+    $("#wpbr").removeClass('selected');
+    map.removeLayer(butternut);
+    $("#butternut").removeClass('selected');
+    map.removeLayer(elms);
+    $("#elms").removeClass('selected');
+    map.removeLayer(hemlocks);
+    $("#hemlocks").removeClass('selected');
+    map.removeLayer(pines);
+    $("#pines").removeClass('selected');
+    map.removeLayer(whitePines);
+    $("#whitepines").removeClass('selected');
+    map.removeLayer(ashes);
+    $("#ashes").removeClass('selected');
+};
 
 function createButtons(map, bebb, bc, eab, gm, hwa, jb, wpbr, butternut, elms, hemlocks, pines, whitePines, ashes){
     $("#bebb").click(function(event) {
@@ -207,8 +215,9 @@ function createButtons(map, bebb, bc, eab, gm, hwa, jb, wpbr, butternut, elms, h
             map.removeLayer(bebb);
             map.removeLayer(elms);
         } else {
-            map.addLayer(bebb);
+            removeAll(map, bebb, bc, eab, gm, hwa, jb, wpbr, butternut, elms, hemlocks, pines, whitePines, ashes);
             map.addLayer(elms);
+            map.addLayer(bebb);
             $(this).addClass('selected');
             $("#elms").addClass('selected');
         }
@@ -221,8 +230,9 @@ function createButtons(map, bebb, bc, eab, gm, hwa, jb, wpbr, butternut, elms, h
             map.removeLayer(bc);
             map.removeLayer(butternut);
         } else {
-            map.addLayer(bc);
+            removeAll(map, bebb, bc, eab, gm, hwa, jb, wpbr, butternut, elms, hemlocks, pines, whitePines, ashes);
             map.addLayer(butternut);
+            map.addLayer(bc);
             $(this).addClass('selected');
             $("#butternut").addClass('selected');
         }
@@ -235,8 +245,9 @@ function createButtons(map, bebb, bc, eab, gm, hwa, jb, wpbr, butternut, elms, h
             map.removeLayer(eab);
             map.removeLayer(ashes);
         } else {
-            map.addLayer(eab);
+            removeAll(map, bebb, bc, eab, gm, hwa, jb, wpbr, butternut, elms, hemlocks, pines, whitePines, ashes);
             map.addLayer(ashes);
+            map.addLayer(eab);
             $(this).addClass('selected');
             $("#ashes").addClass('selected');
         }
@@ -246,12 +257,15 @@ function createButtons(map, bebb, bc, eab, gm, hwa, jb, wpbr, butternut, elms, h
         event.preventDefault();
         if(map.hasLayer(gm)) {
             $(this).removeClass('selected');
+            $("#elms").removeClass('selected');
             map.removeLayer(gm);
             map.removeLayer(elms);
         } else {
-            map.addLayer(gm);
+            removeAll(map, bebb, bc, eab, gm, hwa, jb, wpbr, butternut, elms, hemlocks, pines, whitePines, ashes);
             map.addLayer(elms);
+            map.addLayer(gm);
             $(this).addClass('selected');
+            $("#elms").addClass('selected');
         }
     });
     $("#hwa").click(function(event) {
@@ -262,8 +276,9 @@ function createButtons(map, bebb, bc, eab, gm, hwa, jb, wpbr, butternut, elms, h
             map.removeLayer(hwa);
             map.removeLayer(hemlocks);
         } else {
-            map.addLayer(hwa);
+            removeAll(map, bebb, bc, eab, gm, hwa, jb, wpbr, butternut, elms, hemlocks, pines, whitePines, ashes);
             map.addLayer(hemlocks);
+            map.addLayer(hwa);
             $(this).addClass('selected');
             $("#hemlocks").addClass('selected');
         }
@@ -272,12 +287,15 @@ function createButtons(map, bebb, bc, eab, gm, hwa, jb, wpbr, butternut, elms, h
         event.preventDefault();
         if(map.hasLayer(jb)) {
             $(this).removeClass('selected');
+            $("#elms").removeClass('selected');
             map.removeLayer(jb);
             map.removeLayer(elms);
         } else {
-            map.addLayer(jb);
+            removeAll(map, bebb, bc, eab, gm, hwa, jb, wpbr, butternut, elms, hemlocks, pines, whitePines, ashes);
             map.addLayer(elms);
+            map.addLayer(jb);
             $(this).addClass('selected');
+            $("#elms").addClass('selected');
         }
     });
     $("#wpbr").click(function(event) {
@@ -290,9 +308,10 @@ function createButtons(map, bebb, bc, eab, gm, hwa, jb, wpbr, butternut, elms, h
             map.removeLayer(pines);
             map.removeLayer(whitePines);
         } else {
-            map.addLayer(wpbr);
+            removeAll(map, bebb, bc, eab, gm, hwa, jb, wpbr, butternut, elms, hemlocks, pines, whitePines, ashes);
             map.addLayer(pines);
             map.addLayer(whitePines);
+            map.addLayer(wpbr);
             $(this).addClass('selected');
             $("#pines").addClass('selected');
             $("#whitepines").addClass('selected');
@@ -305,8 +324,9 @@ function createButtons(map, bebb, bc, eab, gm, hwa, jb, wpbr, butternut, elms, h
             map.removeLayer(butternut);
             map.removeLayer(hwa);
         } else {
-            map.addLayer(butternut);
+            removeAll(map, bebb, bc, eab, gm, hwa, jb, wpbr, butternut, elms, hemlocks, pines, whitePines, ashes);
             map.addLayer(hwa);
+            map.addLayer(butternut);
             $(this).addClass('selected');
         }
     });
@@ -317,20 +337,22 @@ function createButtons(map, bebb, bc, eab, gm, hwa, jb, wpbr, butternut, elms, h
             map.removeLayer(elms);
             map.removeLayer(hwa);
         } else {
-            map.addLayer(elms);
+            removeAll(map, bebb, bc, eab, gm, hwa, jb, wpbr, butternut, elms, hemlocks, pines, whitePines, ashes);
             map.addLayer(hwa);
+            map.addLayer(elms);
             $(this).addClass('selected');
         }
     });
-    $("#Hemlocks").click(function(event) {
+    $("#hemlocks").click(function(event) {
         event.preventDefault();
         if(map.hasLayer(hemlocks)) {
             $(this).removeClass('selected');
             map.removeLayer(hemlocks);
             map.removeLayer(hwa);
         } else {
-            map.addLayer(hemlocks);
+            removeAll(map, bebb, bc, eab, gm, hwa, jb, wpbr, butternut, elms, hemlocks, pines, whitePines, ashes);
             map.addLayer(hwa);
+            map.addLayer(hemlocks);
             $(this).addClass('selected');
         }
     });
@@ -341,8 +363,9 @@ function createButtons(map, bebb, bc, eab, gm, hwa, jb, wpbr, butternut, elms, h
             map.removeLayer(pines);
             map.removeLayer(hwa);
         } else {
-            map.addLayer(pines);
+            removeAll(map, bebb, bc, eab, gm, hwa, jb, wpbr, butternut, elms, hemlocks, pines, whitePines, ashes);
             map.addLayer(hwa);
+            map.addLayer(pines);
             $(this).addClass('selected');
         }
     });
@@ -353,8 +376,9 @@ function createButtons(map, bebb, bc, eab, gm, hwa, jb, wpbr, butternut, elms, h
             map.removeLayer(whitepines);
             map.removeLayer(hwa);
         } else {
-            map.addLayer(whitepines);
+            removeAll(map, bebb, bc, eab, gm, hwa, jb, wpbr, butternut, elms, hemlocks, pines, whitePines, ashes);
             map.addLayer(hwa);
+            map.addLayer(whitepines);
             $(this).addClass('selected');
         }
     });
@@ -362,11 +386,12 @@ function createButtons(map, bebb, bc, eab, gm, hwa, jb, wpbr, butternut, elms, h
         event.preventDefault();
         if(map.hasLayer(ashes)) {
             $(this).removeClass('selected');
-            map.removeLayer(ashes);
             map.removeLayer(hwa);
+            map.removeLayer(ashes);
         } else {
-            map.addLayer(ashes);
+            removeAll(map, bebb, bc, eab, gm, hwa, jb, wpbr, butternut, elms, hemlocks, pines, whitePines, ashes);
             map.addLayer(hwa);
+            map.addLayer(ashes);
             $(this).addClass('selected');
         }
     });
