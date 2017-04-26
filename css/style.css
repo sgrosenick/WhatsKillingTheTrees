@@ -20,6 +20,13 @@ body {
     overflow-y: auto;
 }
 
+#search{
+    width: 25%;
+    padding: 10px;
+    display: block;
+    height: 50px;
+}
+
 
 #pests > ul > li > .btn{
     background-color: indianred;

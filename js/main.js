@@ -32,6 +32,7 @@ function createMap(){
     var ashes = L.geoJson();
     
     allLayers = {bebb, bc, eab, gm, hwa, jb, wpbr, butternut, elms, hemlocks, pines, whitePines, ashes}
+   
     
     //function to call each data layer and add it to the json layers above
     getData(bebb, bc, eab, gm, hwa, jb, wpbr, butternut, elms, hemlocks, pines, whitePines, ashes);
@@ -69,109 +70,60 @@ function createMap(){
     }
     setParent(htmlObject, a);
 
-// CHANGE COLOR OF BUTTON WHEN SELECTED
-    var selectColor = "gray";
-    var normalColorPest = "lightgoldenrodyellow";
-    var normalColorTree = "lightcoral";
-    
-    var cssButtonSelector = ".btn.btn-primary"
-/* 
-    map.on('overlayadd', function(i){
-        //PESTS
-        if (i.name == 'Banded Elm Bark Beetle' ){
-            $("#bebb"+cssButtonSelector).css("background-color", selectColor);
-            i.layer.bringToFront();
-        }  else if (i.name == "Butternut Canker"){
-            $("#bc"+cssButtonSelector).css("background-color:", selectColor);
-            i.layer.bringToFront();
-        } else if (i.name == "Emerald Ash Borer"){
-            $("#eab"+cssButtonSelector).css("background-color", selectColor);
-            i.layer.bringToFront();
-            map.addLayer(hemlocks);
-        } else if (i.name == "Gypsy Moth"){
-            $("#gm"+cssButtonSelector).css("background-color", selectColor);
-            i.layer.bringToFront();
-        } else if (i.name == "Hemlock Woolly Adelgid"){
-            $("#hwa"+cssButtonSelector).css("background-color", selectColor);
-            i.layer.bringToFront();
-        } else if (i.name == "Japanese Beetle"){
-            $("#jb"+cssButtonSelector).css("background-color", selectColor);
-            i.layer.bringToFront();
-        } else if (i.name == "White Pine Blister Rust"){
-            $("#wpbr"+cssButtonSelector).css("background-color", selectColor);
-            i.layer.bringToFront();
-        } 
-        
-        //TREES
-        else if (i.name == "Ashes"){
-            $("#ash"+cssButtonSelector).css("background-color", selectColor);
-            i.layer.bringToBack();
-        } else if (i.name == "Butternut"){
-            $("#butternut"+cssButtonSelector).css("background-color", selectColor);
-            i.layer.bringToBack();
-        } else if (i.name == "Elms"){
-            $("#elms"+cssButtonSelector).css("background-color", selectColor);
-            i.layer.bringToBack();
-        } else if (i.name == "Hemlocks"){
-            $("#hemlocks"+cssButtonSelector).css("background-color", selectColor);
-            i.layer.bringToBack();
-            map.addLayer(elms);
-        } else if (i.name == "Pines"){
-            $("#pines"+cssButtonSelector).css("background-color", selectColor);
-            i.layer.bringToBack();
-        } else if (i.name == "White Pines"){
-            $("#whitepines"+cssButtonSelector).css("background-color", selectColor);
-            i.layer.bringToBack();
-        }
-    });
 
-    map.on('overlayremove', function(i){
-        if (i.name == 'Banded Elm Bark Beetle' ){
-            $("#bebb"+cssButtonSelecto).css("background-color", normalColorPest)
-        }  else if (i.name == "Butternut Canker"){
-            $("#bc"+cssButtonSelector).css("background-color", normalColorPest)
-        } else if (i.name == "Emerald Ash Borer"){
-            $("#eab"+cssButtonSelector).css("background-color", normalColorPest)
-        } else if (i.name == "Gypsy Moth"){
-            $("#gm"+cssButtonSelector).css("background-color", normalColorPest)
-        } else if (i.name == "Hemlock Woolly Adelgid"){
-            $("#hwa"+cssButtonSelector).css("background-color", normalColorPest)
-        } else if (i.name == "Japanese Beetle"){
-            $("#jb"+cssButtonSelector).css("background-color", normalColorPest)
-        } else if (i.name == "White Pine Blister Rust"){
-            $("#wpbr"+cssButtonSelector).css("background-color", normalColorPest)
-        }
-        
-        //TREES
-        else if (i.name == "Ashes"){
-            $("#ash"+cssButtonSelector).css("background-color", normalColorTree)
-        } else if (i.name == "Butternut"){
-            $("#butternut"+cssButtonSelector).css("background-color", normalColorTree)
-        } else if (i.name == "Elms"){
-            $("#elms"+cssButtonSelector).css("background-color", normalColorTree)
-        } else if (i.name == "Hemlocks"){
-            $("#hemlocks"+cssButtonSelector).css("background-color", normalColorTree)
-        } else if (i.name == "Pines"){
-            $("#pines"+cssButtonSelector).css("background-color", normalColorTree)
-        } else if (i.name == "White Pines"){
-            $("#whitepines"+cssButtonSelector).css("background-color", normalColorTree)
-        }
-    });
-  */   
     
 // SEARCH BAR
-    var searchControl = new L.Control.Search({
-        layer: bebb,
-        propertyName: 'name',
-        marker: false,
-        //moveToLocation: function(latlng, title, map){
-        //    var zoom = map.getBoundsZoom(latlng.layer.getbounds());
-        //    map.setView(latlnt, zoom);;
-        //}
-    });
+   //sample data values define in us-states.js
+	var data = us_states;
+
+	var featuresLayer = new L.GeoJSON(data, {
+			style: function(feature) {
+				return {color: feature.properties.color };
+			},
+			onEachFeature: function(feature, marker) {
+				marker.bindPopup('<h4 style="color:'+feature.properties.color+'">'+ feature.properties.name +'</h4>');
+			}
+		});
+
+	map.addLayer(featuresLayer);
+
+	var searchControl = new L.Control.Search({
+		container: 'search',
+        layer: featuresLayer,
+		propertyName: 'name',
+		marker: false,
+        collapsed: false,
+        initial: false,
+		moveToLocation: function(latlng, title, map) {
+			//map.fitBounds( latlng.layer.getBounds() );
+			var zoom = map.getBoundsZoom(latlng.layer.getBounds());
+  			map.setView(latlng, zoom); // access the zoom
+		}
+	});
+
+	searchControl.on('search:locationfound', function(e) {
+		
+		//console.log('search:locationfound', );
+
+		//map.removeLayer(this._markerSearch)
+
+		e.layer.setStyle({color: '#ebff08', opacity: 0.5});
+		//if(e.layer._popup)
+			//e.layer.openPopup();
+
+	}).on('search:collapsed', function(e) {
+
+		featuresLayer.eachLayer(function(layer) {	//restore feature color
+			featuresLayer.resetStyle(layer);
+		});	
+	});
+	
+	map.addControl( searchControl );  //inizialize search control
+
     
-    map.addControl(searchControl);
-    
+    //map.addControl(searchControl);
+
+//RETURN
     return allLayers;
 };
 
@@ -519,7 +471,7 @@ function processData(data){
 
 var pestStyle = {
     fillColor: "#ff0000",
-    fillOpacity: 0.8,
+    fillOpacity: 0.5,
     color: "#ff0000",
     weight: 0.9
 }
