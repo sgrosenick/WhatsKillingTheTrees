@@ -251,78 +251,102 @@ function createButtons(map, bebb, bc, eab, gm, hwa, jb, wpbr, butternut, elms, h
         event.preventDefault();
         if(map.hasLayer(butternut)) {
             $(this).removeClass('selected');
+            $("#bc").removeClass('selected');
             map.removeLayer(butternut);
-            map.removeLayer(hwa);
+            map.removeLayer(bc);
         } else {
             removeAll(map, allLayers);
-            map.addLayer(hwa);
             map.addLayer(butternut);
+            map.addLayer(bc);
             $(this).addClass('selected');
+            $("#bc").addClass('selected');
         }
     });
     $("#elms").click(function(event) {
         event.preventDefault();
         if(map.hasLayer(elms)) {
             $(this).removeClass('selected');
+            $("#bebb").removeClass('selected');
+            $("#jb").removeClass('selected');
             map.removeLayer(elms);
-            map.removeLayer(hwa);
+            map.removeLayer(bebb);
+            map.removeLayer(jb);
         } else {
             removeAll(map, allLayers);
-            map.addLayer(hwa);
             map.addLayer(elms);
+            map.addLayer(bebb);
+            map.addLayer(jb);
             $(this).addClass('selected');
+            $("#bebb").addClass('selected');
+            $("#jb").addClass('selected');
         }
     });
     $("#hemlocks").click(function(event) {
         event.preventDefault();
         if(map.hasLayer(hemlocks)) {
             $(this).removeClass('selected');
+            $("#hwa").removeClass('selected');
             map.removeLayer(hemlocks);
             map.removeLayer(hwa);
         } else {
             removeAll(map, allLayers);
-            map.addLayer(hwa);
             map.addLayer(hemlocks);
+            map.addLayer(hwa);
             $(this).addClass('selected');
+            $("#hwa").addClass('selected');
         }
     });
     $("#pines").click(function(event) {
         event.preventDefault();
         if(map.hasLayer(pines)) {
             $(this).removeClass('selected');
+            $("#whitepines").removeClass('selected');
+            $("#wpbr").removeClass('selected');
             map.removeLayer(pines);
-            map.removeLayer(hwa);
+            map.removeLayer(whitePines);
+            map.removeLayer(wpbr);
         } else {
             removeAll(map, allLayers);
-            map.addLayer(hwa);
             map.addLayer(pines);
+            map.addLayer(whitePines);
+            map.addLayer(wpbr);
             $(this).addClass('selected');
+            $("#whitepines").addClass('selected');
+            $("#wpbr").addClass('selected');
         }
     });
     $("#whitepines").click(function(event) {
         event.preventDefault();
-        if(map.hasLayer(whitepines)) {
+        if(map.hasLayer(whitePines)) {
             $(this).removeClass('selected');
-            map.removeLayer(whitepines);
-            map.removeLayer(hwa);
+            $("#pines").removeClass('selected');
+            $("#wpbr").removeClass('selected');
+            map.removeLayer(whitePines);
+            map.removeLayer(pines);
+            map.removeLayer(wpbr);
         } else {
             removeAll(map, allLayers);
-            map.addLayer(hwa);
-            map.addLayer(whitepines);
+            map.addLayer(whitePines);
+            map.addLayer(pines);
+            map.addLayer(wpbr);
             $(this).addClass('selected');
+            $("#pines").addClass('selected');
+            $("#wpbr").addClass('selected');
         }
     });
     $("#ashes").click(function(event) {
         event.preventDefault();
         if(map.hasLayer(ashes)) {
             $(this).removeClass('selected');
-            map.removeLayer(hwa);
+            $("#eab").removeClass('selected');
+            map.removeLayer(eab);
             map.removeLayer(ashes);
         } else {
             removeAll(map, allLayers);
-            map.addLayer(hwa);
             map.addLayer(ashes);
+            map.addLayer(eab);
             $(this).addClass('selected');
+            $("#eab").addClass('selected');
         }
     });
 };
