@@ -26,7 +26,18 @@ body {
     display: block;
     height: 50px;
 }
+#buttons{
+    width: 25%;
+    padding: 10px;
+    display: block;
+    height: 50px;
+}
 
+.btn-secondary{
+    background-color: floralwhite;
+    color: gray;
+    border: 1px solid #c6c6a5;
+}
 
 #pests > ul > li > .btn{
     background-color: indianred;

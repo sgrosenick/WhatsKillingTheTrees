@@ -39,6 +39,9 @@ function createMap(){
 
     createButtons(map, bebb, bc, eab, gm, hwa, jb, wpbr, butternut, elms, hemlocks, pines, whitePines, ashes);
     
+    home(map);
+    zoom(map);
+    
    
 
 //CREATE GROUPED LAYER CONTROL 
@@ -127,7 +130,20 @@ function createMap(){
     return allLayers;
 };
 
+function home(map){
+    $("#home").click(function(event) {
+        event.preventDefault();
+        map.setView([39, -96], 4);
+    });
+};
 
+function zoom(map, layer){
+    $("#zoom").click(function(event,latlng) {
+        event.preventDefault();
+        var zoom = map.getBoundsZoom(latlng.layer.getBounds());
+  			map.setView(latlng, zoom);
+    });
+};
 
 function removeAll(map, allLayers){
     for (i in allLayers){
