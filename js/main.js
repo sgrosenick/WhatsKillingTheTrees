@@ -138,10 +138,13 @@ function home(map){
 
 function zoom(map, control){
     $("#zoom").click(function(event,latlng) {
-        event.preventDefault();
-        var layer = control.getActiveOverlayLayers();
-        var zoom = map.getBoundsZoom(latlng.layer.getBounds());
-  			map.setView(latlng, zoom);
+        var newElem = $('.selected');
+        console.log(newElem);
+        var firstElm = newElem[0];
+        console.log(firstElm);
+        
+        //Having trouble grabbing the bounds of the elements, I think we need to use
+        //the getBounds() method?
     });
 };
 
