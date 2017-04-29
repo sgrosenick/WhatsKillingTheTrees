@@ -39,7 +39,7 @@ function createMap(){
 
     createButtons(map, bebb, bc, eab, gm, hwa, jb, wpbr, butternut, elms, hemlocks, pines, whitepines, ashes);
     
-
+    console.log(bebb);
 
 //CREATE GROUPED LAYER CONTROL 
     //group of basemaps
@@ -126,6 +126,7 @@ function createMap(){
     
 //RETURN
     home(map);
+    zoom(map, bebb, bc, eab, gm, hwa, jb, wpbr);
     return allLayers;
 };
 
@@ -136,15 +137,43 @@ function home(map){
     });
 };
 
-function zoom(map, control){
+// function to zoom to the affected area
+function zoom(map, bebb, bc, eab, gm, hwa, jb, wpbr){
     $("#zoom").click(function(event,latlng) {
+        // grabs button selected
         var newElem = $('.selected');
-        console.log(newElem);
+        // takes only the first element
         var firstElm = newElem[0];
-        console.log(firstElm);
-        
-        //Having trouble grabbing the bounds of the elements, I think we need to use
-        //the getBounds() method?
+        //gets the id of the first element
+        var id = firstElm.id;
+        // if statements to test if the id is a layer
+        console.log(firstElm.id);
+        if (id == "bebb"){
+            extent = bebb.getBounds();
+        } else if (id == "bc") {
+            extent = bc.getBounds();
+        } else if (id == "eab") {
+            extent = eab.getBounds();
+        } else if (id == "gm") {
+            extent = gm.getBounds();
+        } else if (id == "hwa") {
+            extent = hwa.getBounds();
+        } else if (id == "jb") {
+            extent = jb.getBounds();
+        } else if (id == "wpbr") {
+            extent = wpbr.getBounds();
+        } else {
+            // if the id is none 
+            extent = map.getBounds();
+        };
+
+        var neLat = extent._northEast.lat;
+        var neLng = extent._northEast.lng
+        var swLat = extent._southWest.lat;
+        var swLng = extent._southWest.lng
+        map.fitBounds([
+            [neLat,neLng], [swLat,swLng]
+        ]);
     });
 };
 
