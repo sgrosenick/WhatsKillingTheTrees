@@ -127,6 +127,7 @@ function createMap(){
 //RETURN
     home(map);
     zoom(map, bebb, bc, eab, gm, hwa, jb, wpbr);
+    modal();
     return allLayers;
 };
 
@@ -175,6 +176,78 @@ function zoom(map, bebb, bc, eab, gm, hwa, jb, wpbr){
             [neLat,neLng], [swLat,swLng]
         ]);
     });
+};
+
+function modal(){
+    // Get the modal
+    var modal = document.getElementById('myModal');
+
+    // Get the button that opens the modal
+    var btn = document.getElementById("info");
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks on the button, open the modal 
+    btn.onclick = function() {
+        modal.style.display = "block";
+        
+        desc = document.getElementById("desc");
+        title = document.getElementById("t");
+        
+        // grabs button selected
+        var newElem = $('.selected');
+        // takes only the first element
+        var firstElm = newElem[0];
+        //gets the id of the first element
+        if (firstElm){
+            var id = firstElm.id;
+            if (id == "bebb"){
+                title.innerHTML = "<h5>Pest Name: Banded Elm Bark Beetle</h5>"
+                desc.innerHTML = "<li>Scientific Name: Scolytus schevyrewi</li><li>Affects: Elm Species</li><li>Native to: northern China, central Asia, and Russia</li><li>The Banded Elm Bark Beetle likely arrived on shipping pallets or containers and was first discovered in 2003 in Colorado and Utah. "
+            } else if (id == "bc") {
+                title.innerHTML = "<h5>Pest Common Name: Butternut Canker</h5>"
+                desc.innerHTML = "<li>Scientific Name: Sirococcus clavigignenti juglandacearum</li><li>Affects: Butternut Species (severely) and other members of the Juglans genus</li><li>Native to: Asia</li><li>The Butternut Canker is depleting already sparse populations of Butternuts in the eastern US. This fungal disease affects all above-ground portions of the tree and can eventually lead to death.</li>"
+
+            } else if (id == "eab") {
+                title.innerHTML = "<h5>Pest Common Name: Emerald Ash Borer</h5>"
+                desc.innerHTML = "<li>Scientific Name: Agrilus planipennis</li><li>Affects: Ash Species</li><li>Native to: Asia</li><li>The Emerald Ash Borer was discovered in North America in 2002 in Detroit. It's spread since that time has been largely aided by human activity such as the movement of nursery trees and logs for firewood.</li>" 
+
+            } else if (id == "gm") {
+                title.innerHTML = "<h5>Pest Common Name: Gypsy Moth</h5>"
+                desc.innerHTML = "<li>Scientific Name: Lymantria dispar</li><li>Affects: Most Deciduous Trees and Shrubs</li><li>Native to: temperate Europe and Asia</li><li>The Gypsy Moth was introduced in the Northeastern United states in the mid-1800s. The larvae cause extreme damage to foliage by feeding on leaves. </li>"
+            } else if (id == "hwa") {
+                title.innerHTML = "<h5>Pest Common Name: Hemlock Woolly Adelgid</h5>"
+                desc.innerHTML = "<li>Scientific Name: Adelges tsugae</li><li>Affects: Eastern and Carolina Hemlocks</li><li>Native to: Asia</li><li>The Hemlock Woolly Adelgid has caused devastation to Hemlocks in the northeastern United States. It depletes nutrients from the base of the tree's needles. Warmer winters make Hemlocks in the Southern US more likely to die from the pest.</li>"
+            } else if (id == "jb") {
+                title.innerHTML = "<h5>Pest Common Name: Japanese Beetle </h5>"
+                desc.innerHTML = "<li>Scientific Name: Popillia japonica</li><li>Affects: Many Species of Trees, Shrubs, and Garden Crops</li><li>Native to: Japan</li><li>The Japanese Beetle is a double threat. Its larva feed on the root system of trees and plants while the adults do severe damage above ground. It was first discovered in New Jersey in 1916 and is a major threat to American crops.</li>"
+            } else if (id == "wpbr") {
+                title.innerHTML = "<h5>Pest Common Name: White Pine Blister Rust </h5>"
+                desc.innerHTML = "<li>Scientific Name: Cronartium ribicola</li><li>Affects: Pines and White Pines</li><li>Native to: Asia</li><li>The White Pine Blister Rust has very specific reproductive needs but spores can be easily spread. The entire life cycle last 3 to 6 years. The fungus causes swelling and cankers which can kill branches and entire trees.</li>"
+            } else {
+                // if the id is none 
+                title.innerHTML = "<h5>No Data Selected</h5>"
+                desc.innerHTML = ""
+            };
+        } else{
+            // if the id is none 
+            title.innerHTML = "<h5>No Data Selected</h5>"
+            desc.innerHTML = ""
+        };
+    }
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
 };
 
 function removeAll(map, allLayers){
