@@ -39,10 +39,7 @@ function createMap(){
 
     createButtons(map, bebb, bc, eab, gm, hwa, jb, wpbr, butternut, elms, hemlocks, pines, whitePines, ashes);
     
-    home(map);
-    zoom(map);
-    
-   
+
 
 //CREATE GROUPED LAYER CONTROL 
     //group of basemaps
@@ -121,12 +118,14 @@ function createMap(){
 		});	
 	});
 	
-	map.addControl( searchControl );  //inizialize search control
+	map.addControl( searchControl );//inizialize search control
 
     
     //map.addControl(searchControl);
 
+    
 //RETURN
+    home(map);
     return allLayers;
 };
 
@@ -137,9 +136,10 @@ function home(map){
     });
 };
 
-function zoom(map, layer){
+function zoom(map, control){
     $("#zoom").click(function(event,latlng) {
         event.preventDefault();
+        var layer = control.getActiveOverlayLayers();
         var zoom = map.getBoundsZoom(latlng.layer.getBounds());
   			map.setView(latlng, zoom);
     });
