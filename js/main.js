@@ -28,16 +28,16 @@ function createMap(){
     var elms =  L.geoJson();
     var hemlocks =  L.geoJson();
     var pines =  L.geoJson();
-    var whitePines =  L.geoJson();
+    var whitepines =  L.geoJson();
     var ashes = L.geoJson();
     
-    allLayers = {bebb, bc, eab, gm, hwa, jb, wpbr, butternut, elms, hemlocks, pines, whitePines, ashes}
+    allLayers = {bebb, bc, eab, gm, hwa, jb, wpbr, butternut, elms, hemlocks, pines, whitepines, ashes}
    
     
     //function to call each data layer and add it to the json layers above
-    getData(bebb, bc, eab, gm, hwa, jb, wpbr, butternut, elms, hemlocks, pines, whitePines, ashes);
+    getData(bebb, bc, eab, gm, hwa, jb, wpbr, butternut, elms, hemlocks, pines, whitepines, ashes);
 
-    createButtons(map, bebb, bc, eab, gm, hwa, jb, wpbr, butternut, elms, hemlocks, pines, whitePines, ashes);
+    createButtons(map, bebb, bc, eab, gm, hwa, jb, wpbr, butternut, elms, hemlocks, pines, whitepines, ashes);
     
 
 
@@ -155,7 +155,7 @@ function removeAll(map, allLayers){
     };
 };
 
-function createButtons(map, bebb, bc, eab, gm, hwa, jb, wpbr, butternut, elms, hemlocks, pines, whitePines, ashes){
+function createButtons(map, bebb, bc, eab, gm, hwa, jb, wpbr, butternut, elms, hemlocks, pines, whitepines, ashes){
     $("#bebb").click(function(event) {
         event.preventDefault();
         if(map.hasLayer(bebb)) {
@@ -255,11 +255,11 @@ function createButtons(map, bebb, bc, eab, gm, hwa, jb, wpbr, butternut, elms, h
             $("#whitepines").removeClass('selected');
             map.removeLayer(wpbr);
             map.removeLayer(pines);
-            map.removeLayer(whitePines);
+            map.removeLayer(whitepines);
         } else {
             removeAll(map, allLayers);
             map.addLayer(pines);
-            map.addLayer(whitePines);
+            map.addLayer(whitepines);
             map.addLayer(wpbr);
             $(this).addClass('selected');
             $("#pines").addClass('selected');
@@ -319,37 +319,29 @@ function createButtons(map, bebb, bc, eab, gm, hwa, jb, wpbr, butternut, elms, h
         event.preventDefault();
         if(map.hasLayer(pines)) {
             $(this).removeClass('selected');
-            $("#whitepines").removeClass('selected');
             $("#wpbr").removeClass('selected');
             map.removeLayer(pines);
-            map.removeLayer(whitePines);
             map.removeLayer(wpbr);
         } else {
             removeAll(map, allLayers);
             map.addLayer(pines);
-            map.addLayer(whitePines);
             map.addLayer(wpbr);
             $(this).addClass('selected');
-            $("#whitepines").addClass('selected');
             $("#wpbr").addClass('selected');
         }
     });
     $("#whitepines").click(function(event) {
         event.preventDefault();
-        if(map.hasLayer(whitePines)) {
+        if(map.hasLayer(whitepines)) {
             $(this).removeClass('selected');
-            $("#pines").removeClass('selected');
             $("#wpbr").removeClass('selected');
-            map.removeLayer(whitePines);
-            map.removeLayer(pines);
+            map.removeLayer(whitepines);
             map.removeLayer(wpbr);
         } else {
             removeAll(map, allLayers);
-            map.addLayer(whitePines);
-            map.addLayer(pines);
+            map.addLayer(whitepines);
             map.addLayer(wpbr);
             $(this).addClass('selected');
-            $("#pines").addClass('selected');
             $("#wpbr").addClass('selected');
         }
     });
@@ -370,7 +362,7 @@ function createButtons(map, bebb, bc, eab, gm, hwa, jb, wpbr, butternut, elms, h
     });
 };
 
-function getData( bebb, bc, eab, gm, hwa, jb, wpbr, butternut, elms, hemlocks, pines, whitePines, ashes){
+function getData( bebb, bc, eab, gm, hwa, jb, wpbr, butternut, elms, hemlocks, pines, whitepines, ashes){
     //  LOAD DATA TREE
     $.ajax("data/Butternut.geojson", {
         dataType: "json",
@@ -414,7 +406,7 @@ function getData( bebb, bc, eab, gm, hwa, jb, wpbr, butternut, elms, hemlocks, p
             //create attribute array
             var attributes = processData(response);
             //add to layer
-            L.geoJson(response, treeStyle).addTo(whitePines)
+            L.geoJson(response, treeStyle).addTo(whitepines)
         }
     });
     $.ajax("data/Ashes.geojson", {
