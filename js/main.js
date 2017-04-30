@@ -617,4 +617,7 @@ var treeStyle = {
     weight: 1
 }
 
-$(document).ready(createMap);
+$(document).ready(function(){
+    createMap();
+    $('[data-toggle="tooltip"]').tooltip();
+});
