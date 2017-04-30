@@ -7,7 +7,7 @@
     align-items: center;
 }
 body {
-    background-color: #636363;
+    background-color: lightgrey;
 }
 
 #panel {
@@ -36,15 +36,26 @@ body {
     
 }
 #layerSelect{
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: 'Lato', sans-serif;
+    font-weight: bold;
     width: 90%;
     height: 100%;
     background-color: rgba(255,255,255,0);
     padding: 10px;
     line-height: 45px;
-    border: solid gray 1px;
-    box-shadow: 0 1px 5px rgba(0,0,0,0.4);
     height: 500px;
+}
+
+#pests > p{
+    font-weight: bolder;
+    text-decoration: underline;
+    color: darkred
+}
+
+#trees > p{
+    font-weight: bolder;
+    text-decoration: underline;
+    color: darkgreen;
 }
 
 .btn-group-wrap {
@@ -82,7 +93,7 @@ div.btn-group {
 
 #pests > ul > li > .btn.btn-primary.selected {
     color: lightyellow;
-    background-color: darkred
+    background-color: darkred;
 }
 
 #trees > ul > li > .btn.btn-primary.selected {
@@ -101,15 +112,25 @@ div.btn-group {
     border-radius: 0px;
 	}
 
-h1,
+h1{
+    font-family: 'Lato', sans-serif;
+    font-weight: 700;
+    text-align: left;
+    color: #5b5b5b;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
 h2,
 h3,
 h4,
 h6 {
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-weight: 700;
+    font-family: 'Lato', sans-serif;
+    font-weight: 400;
     text-align: left;
-    color: white;
+    color: #5b5b5b;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 
@@ -142,8 +163,15 @@ ul{
 
 
 .leaflet-popup-content p {
-	margin: 5px 0;
+	margin: 1px 0;
+    font-family: 'Lato', sans-serif;
+    line-height: .5;
+    text-align: center;
 	}
+
+#map > div.leaflet-pane.leaflet-map-pane > div.leaflet-pane.leaflet-popup-pane > div > div.leaflet-popup-content-wrapper > div > p:nth-child(3){
+    text-decoration: underline
+}
 
 .leaflet-control-attribution{
     font-size: 7px;
@@ -171,7 +199,13 @@ ul{
     margin: 15% auto; /* 15% from the top and centered */
     padding: 20px;
     border: 1px solid #888;
-    width: 80%; /* Could be more or less, depending on screen size */
+    width: 60%; 
+}
+
+#t > h5{
+    font-family: 'Lato', sans-serif;
+    text-decoration: underline;
+    font-size: 24px;
 }
 
 /* The Close Button */
@@ -196,4 +230,75 @@ ul{
 #popupHeader {
     color: black;
     font-weight: bold;
+}
+
+
+/*Style 'show menu' label button and hide it by default*/
+.show-panel {
+	font-family: 'Lato', sans-serif;
+	text-decoration: none;
+	color: #fff;
+	background: #625296;
+	text-align: center;
+	padding: 10px 0;
+	display: none;
+    border-radius: 7px;
+}
+
+/*Hide checkbox*/
+input[type=checkbox]{
+    display: none;
+}
+
+/*Show menu when invisible checkbox is checked*/
+input[type=checkbox]:checked ~ #panel{
+    display: block;
+}
+
+
+/*Responsive Styles*/
+
+@media screen and (max-width : 1000px){
+	/*Make dropdown links appear inline*/
+	layerSelect {
+		position: static;
+		display: none;
+        padding:0;
+	}
+    #panel {
+		position: static;
+		display: none;
+        padding: 0; 
+        width: 80%;
+        margin: auto;
+        
+	}
+	/*Create vertical spacing*/
+	li {
+		margin-bottom: 1px;
+        padding: 0; 
+	}
+	/*Make all menu links full width*/
+	ul li, li a {
+		width: 100%;
+        padding: 0; 
+	}
+    #pests{
+        width:100%;
+        padding: 0; 
+    }
+
+
+    #trees{
+        width:100%;
+        padding: 0; 
+    }
+    
+    #map{
+        width: 98%;
+    }
+    	/*Display 'show menu' link*/
+	.show-panel {
+		display:block;
+	}
 }

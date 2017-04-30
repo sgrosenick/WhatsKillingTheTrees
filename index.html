@@ -5,7 +5,7 @@
 		<meta name="viewport" content="width=device-width">
 		<title>What's Killing The Trees?</title>
         <h1>What's Killing the Trees?</h1>
-        <h4>Our globalized world has many benefits but increasing the flow of goods between nations has also increased the flow of pests and diseases.</h4>
+        <h4>Our globalized world has many benefits but increasing the flow of goods between nations has also increased the flow of pests and diseases. <br><small>Click on and off the different pest and tree layers to see how much of a tree's habitat is also inhabited by a pest.</small></h4>
 
 		<!--put your external stylesheet links here-->
 		
@@ -14,6 +14,7 @@
         <link rel="stylesheet" href ="lib/leaflet-search-master/leaflet-search-master/src/leaflet-search.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
         <link rel="stylesheet" href ="lib/font-awesome-4.7.0/font-awesome-4.7.0/css/font-awesome.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Lato:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
         <link rel="stylesheet" href="css/style.css">
 
 		<!--[if IE<9]>
@@ -23,7 +24,8 @@
 
 	<body>
 		<!--put your initial page content here-->
-        
+       <label for="show-panel" class="show-panel">Show Map Options</label>
+	   <input type="checkbox" id="show-panel" role="button">
         <div id="panel"> 
             <div id = "search"></div>
             <div id ="buttons" class="btn-group" role="group">
@@ -39,6 +41,7 @@
             </div>
             <div id = "layerSelect">
                 <div id = "pests">
+                    <p> Pests</p>
                     <ul>
                         <li><a id="bebb" href="#" class="btn btn-primary">Banded Elm Bark Beetle</a></li>
                         <li><a id="bc" href="#" class="btn btn-primary">Butternut Canker</a></li>
@@ -51,6 +54,7 @@
                     </ul>
                 </div>
                 <div id = "trees">
+                    <p>Trees</p>
                     <ul>
                         <li><a id="ashes" href="#" class="btn btn-primary">Ashes</a></li>
                         <li><a id="butternut" href="#" class="btn btn-primary">Butternut</a></li>
