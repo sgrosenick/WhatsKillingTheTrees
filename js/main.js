@@ -59,18 +59,6 @@ function createMap(){
     var layerControl = L.control.layers(basemaps);
     map.addControl(layerControl)
     
-    // Call the getContainer routine.
-    var htmlObject = layerControl.getContainer();
-    // Get the desired parent node.
-    var a = document.getElementById('panel');
-
-    // append that node to the new parent.
-    function setParent(el, newParent){
-        newParent.appendChild(el);
-    }
-    setParent(htmlObject, a);
-
-
     
 // SEARCH BAR
    //sample data values define in us-states.js
