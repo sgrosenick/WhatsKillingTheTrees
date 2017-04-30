@@ -38,8 +38,6 @@ function createMap(){
     getData(bebb, bc, eab, gm, hwa, jb, wpbr, butternut, elms, hemlocks, pines, whitepines, ashes);
 
     createButtons(map, bebb, bc, eab, gm, hwa, jb, wpbr, butternut, elms, hemlocks, pines, whitepines, ashes);
-    
-    console.log(bebb);
 
 //CREATE GROUPED LAYER CONTROL 
     //group of basemaps
@@ -58,7 +56,6 @@ function createMap(){
 // MOVE LAYER CONTROL OUT OF MAP
     var layerControl = L.control.layers(basemaps);
     map.addControl(layerControl)
-    
     
 // SEARCH BAR
    //sample data values define in us-states.js
@@ -513,65 +510,78 @@ function getData( bebb, bc, eab, gm, hwa, jb, wpbr, butternut, elms, hemlocks, p
     $.ajax("data/Banded_Elm_Bark_Beetle.geojson", {
         dataType: "json",
         success: function(response){
-            //create an attributes array
-            var attributes = processData(response);
-            //add to layer
-            L.geoJson(response, pestStyle).addTo(bebb);
+            L.geoJson(response, {
+                style: pestStyle,
+                onEachFeature: function(feature, layer) {
+                    layer.bindPopup("<p>" + feature.properties.CountyName + ", " + feature.properties.StateName + "</p><br><p>Infestation Status</p><br><p>County Level: " + feature.properties.CountyInfe + "</p><br><p>State Level: " + feature.properties.StateInfes + "</p>")
+                }
+            }).addTo(bebb)
         }
     });
     $.ajax("data/Butternut_Canker.geojson", {
         dataType: "json",
         success: function(response){
-            //create an attributes array
-            var attributes = processData(response);
-            //add to layer
-            L.geoJson(response, pestStyle).addTo(bc)
+            L.geoJson(response, {
+                style: pestStyle,
+                onEachFeature: function(feature, layer) {
+                    layer.bindPopup("<p>" + feature.properties.CountyName + ", " + feature.properties.StateName + "</p><br><p>Infestation Status</p><br><p>County Level: " + feature.properties.CountyInfe + "</p><br><p>State Level: " + feature.properties.StateInfes + "</p>")
+                }
+            }).addTo(bc)
         }
     });
     $.ajax("data/Emerald_Ash_Borer.geojson", {
         dataType: "json",
         success: function(response){
-            //create an attributes array
-            var attributes = processData(response);
-            //add to layer
-            L.geoJson(response, pestStyle).addTo(eab)
+            L.geoJson(response, {
+                style: pestStyle,
+                onEachFeature: function(feature, layer) {
+                    layer.bindPopup("<p>" + feature.properties.CountyName + ", " + feature.properties.StateName + "</p><br><p>Infestation Status</p><br><p>County Level: " + feature.properties.CountyInfe + "</p><br><p>State Level: " + feature.properties.StateInfes + "</p>")
+                }
+            }).addTo(eab)
         }
     });
     $.ajax("data/Gypsy_Moth.geojson", {
         dataType: "json",
         success: function(response){
-            //create an attributes array
-            var attributes = processData(response);
-            //add to layer
-            L.geoJson(response, pestStyle).addTo(gm)
+            L.geoJson(response, {
+                style: pestStyle,
+                onEachFeature: function(feature, layer) {
+                    layer.bindPopup("<p>" + feature.properties.CountyName + ", " + feature.properties.StateName + "</p><br><p>Infestation Status</p><br><p>County Level: " + feature.properties.CountyInfe + "</p><br><p>State Level: " + feature.properties.StateInfes + "</p>")
+                }
+            }).addTo(gm)
         }
     });
     $.ajax("data/Hemlock_Woolly_Adelgid.geojson", {
         dataType: "json",
         success: function(response){
-            //create an attributes array
-            var attributes = processData(response);
-            //add to layer
-            L.geoJson(response, pestStyle).addTo(hwa)
+            L.geoJson(response, {
+                style: pestStyle,
+                onEachFeature: function(feature, layer) {
+                    layer.bindPopup("<p>" + feature.properties.CountyName + ", " + feature.properties.StateName + "</p><br><p>Infestation Status</p><br><p>County Level: " + feature.properties.CountyInfe + "</p><br><p>State Level: " + feature.properties.StateInfes + "</p>")
+                }
+            }).addTo(hwa)
         }
     });
     $.ajax("data/Japanese_Beetle.geojson", {
         dataType: "json",
         success: function(response){
-            //create an attributes array
-            var attributes = processData(response);
-            //add to layer
-            L.geoJson(response, pestStyle).addTo(jb)
+            L.geoJson(response, {
+                style: pestStyle,
+                onEachFeature: function(feature, layer) {
+                    layer.bindPopup("<p>" + feature.properties.CountyName + ", " + feature.properties.StateName + "</p><br><p>Infestation Status</p><br><p>County Level: " + feature.properties.CountyInfe + "</p><br><p>State Level: " + feature.properties.StateInfes + "</p>")
+                }
+            }).addTo(jb)
         }
     });
     $.ajax("data/White_Pine_Blister_Rust.geojson", {
         dataType: "json",
         success: function(response){
-            //create an attributes array
-            var attributes = processData(response);
-            //console.log("WhitePineBlisterRust: " + attributes);
-            //add to layer
-            L.geoJson(response, pestStyle).addTo(wpbr)
+            L.geoJson(response, {
+                style: pestStyle,
+                onEachFeature: function(feature, layer) {
+                    layer.bindPopup("<p>" + feature.properties.CountyName + ", " + feature.properties.StateName + "</p><br><p>Infestation Status</p><br><p>County Level: " + feature.properties.CountyInfe + "</p><br><p>State Level: " + feature.properties.StateInfes + "</p>")
+                }
+            }).addTo(wpbr)
         }
     });
 };
@@ -589,7 +599,7 @@ function processData(data){
     };
 
     //check result
-    //console.log(attributes);
+    console.log("Process Data: " + attributes);
 
     return attributes;
 };

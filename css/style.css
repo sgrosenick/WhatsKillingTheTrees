@@ -176,3 +176,8 @@ ul{
 #myModal > div > h5{
     color: black;
 }
+
+#popupHeader {
+    color: black;
+    font-weight: bold;
+}
