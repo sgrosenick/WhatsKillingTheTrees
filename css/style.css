@@ -96,6 +96,7 @@ div.btn-group {
     background-color: darkred;
 }
 
+
 #trees > ul > li > .btn.btn-primary.selected {
     color: lightyellow;
     background-color: darkgreen;

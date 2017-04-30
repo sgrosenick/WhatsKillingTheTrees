@@ -31,6 +31,11 @@ function createMap(){
     var whitepines =  L.geoJson();
     var ashes = L.geoJson();
     
+    //default load
+    
+    map.addLayer(elms);
+    map.addLayer(bebb);
+
     allLayers = {bebb, bc, eab, gm, hwa, jb, wpbr, butternut, elms, hemlocks, pines, whitepines, ashes}
    
     
@@ -106,13 +111,13 @@ function createMap(){
 
     
     //map.addControl(searchControl);
-
     
 //RETURN
     home(map);
     zoom(map, bebb, bc, eab, gm, hwa, jb, wpbr);
     modal();
     return allLayers;
+    
 };
 
 function home(map){
@@ -243,7 +248,7 @@ function removeAll(map, allLayers){
 
 function createButtons(map, bebb, bc, eab, gm, hwa, jb, wpbr, butternut, elms, hemlocks, pines, whitepines, ashes){
     $("#bebb").click(function(event) {
-        event.preventDefault();
+        //event.preventDefault();
         if(map.hasLayer(bebb)) {
             $(this).removeClass('selected');
             $("#elms").removeClass('selected');
@@ -449,61 +454,7 @@ function createButtons(map, bebb, bc, eab, gm, hwa, jb, wpbr, butternut, elms, h
 };
 
 function getData( bebb, bc, eab, gm, hwa, jb, wpbr, butternut, elms, hemlocks, pines, whitepines, ashes){
-    //  LOAD DATA TREE
-    $.ajax("data/Butternut.geojson", {
-        dataType: "json",
-        success: function(response){
-            //create attribute array
-            var attributes = processData(response);
-            //add to layer
-            L.geoJson(response, treeStyle).addTo(butternut)
-        }
-    });
-    $.ajax("data/Elms.geojson", {
-        dataType: "json",
-        success: function(response){
-            //create attribute array
-            var attributes = processData(response);
-            //add to layer
-            L.geoJson(response, treeStyle).addTo(elms)
-        }
-    });
-    $.ajax("data/Hemlocks.geojson", {
-        dataType: "json",
-        success: function(response){
-            //create attribute array
-            var attributes = processData(response);
-            //add to layer
-            L.geoJson(response, treeStyle).addTo(hemlocks)
-        }
-    });
-    $.ajax("data/Pines.geojson", {
-        dataType: "json",
-        success: function(response){
-            //create attribute array
-            var attributes = processData(response);
-            //add to layer
-            L.geoJson(response, treeStyle).addTo(pines)
-        }
-    });
-    $.ajax("data/WhitePines.geojson", {
-        dataType: "json",
-        success: function(response){
-            //create attribute array
-            var attributes = processData(response);
-            //add to layer
-            L.geoJson(response, treeStyle).addTo(whitepines)
-        }
-    });
-    $.ajax("data/Ashes.geojson", {
-        dataType: "json",
-        success: function(response){
-            //create attribute array
-            var attributes = processData(response);
-            //add to layer
-            L.geoJson(response, treeStyle).addTo(ashes)
-        }
-    });
+   
     
     //  LOAD DISEASE DATA
     $.ajax("data/Banded_Elm_Bark_Beetle.geojson", {
@@ -581,6 +532,62 @@ function getData( bebb, bc, eab, gm, hwa, jb, wpbr, butternut, elms, hemlocks, p
                     layer.bindPopup("<p><b><big>" + feature.properties.CountyName + ", " + feature.properties.StateName + "</big></b></p><br><p><i>Infestation Status</i></p><br><p><b>County Level: </b>" + feature.properties.CountyInfe + "</p><br><p> <b>State Level: </b>" + feature.properties.StateInfes + "</p>")
                 }
             }).addTo(wpbr)
+        }
+    });
+    
+     //  LOAD DATA TREE
+    $.ajax("data/Butternut.geojson", {
+        dataType: "json",
+        success: function(response){
+            //create attribute array
+            var attributes = processData(response);
+            //add to layer
+            L.geoJson(response, treeStyle).addTo(butternut)
+        }
+    });
+    $.ajax("data/Elms.geojson", {
+        dataType: "json",
+        success: function(response){
+            //create attribute array
+            var attributes = processData(response);
+            //add to layer
+            L.geoJson(response, treeStyle).addTo(elms)
+        }
+    });
+    $.ajax("data/Hemlocks.geojson", {
+        dataType: "json",
+        success: function(response){
+            //create attribute array
+            var attributes = processData(response);
+            //add to layer
+            L.geoJson(response, treeStyle).addTo(hemlocks)
+        }
+    });
+    $.ajax("data/Pines.geojson", {
+        dataType: "json",
+        success: function(response){
+            //create attribute array
+            var attributes = processData(response);
+            //add to layer
+            L.geoJson(response, treeStyle).addTo(pines)
+        }
+    });
+    $.ajax("data/WhitePines.geojson", {
+        dataType: "json",
+        success: function(response){
+            //create attribute array
+            var attributes = processData(response);
+            //add to layer
+            L.geoJson(response, treeStyle).addTo(whitepines)
+        }
+    });
+    $.ajax("data/Ashes.geojson", {
+        dataType: "json",
+        success: function(response){
+            //create attribute array
+            var attributes = processData(response);
+            //add to layer
+            L.geoJson(response, treeStyle).addTo(ashes)
         }
     });
 };
